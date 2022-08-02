@@ -35,7 +35,7 @@
 					<!-- Menu desktop -->
 					<div class="menu-desktop">
 						<ul class="main-menu">
-							<li class="active-menu">
+							<li class="{% if request.path == '/' %}active-menu{% endif %}">
 								<a href="{% url 'pages:home' %}">Home</a>
 								<ul class="sub-menu">
 									<li><a href="index.html">Homepage 1</a></li>
@@ -44,23 +44,23 @@
 								</ul>
 							</li>
 
-							<li>
+							<li class="{% if request.path == 'shop/' %}active-menu{% endif %}">
 								<a href="product.html">Shop</a>
 							</li>
 
-							<li class="label1" data-label1="hot">
+							<li class="label1 {% if request.path == 'features/' %}active-menu{% endif %}" data-label1="hot">
 								<a href="shoping-cart.html">Features</a>
 							</li>
 
-							<li>
+							<li class="{% if request.path == 'blogs/' %}active-menu{% endif %}">
 								<a href="{% url 'blogs:posts' %}">Blog</a>
 							</li>
 
-							<li>
+							<li class="{% if request.path == 'about/' %}active-menu{% endif %}">
 								<a href="about.html">About</a>
 							</li>
 
-							<li>
+							<li class="{% if request.path == 'features/' %}active-menu{% endif %}">
 								<a href="{% url 'pages:contact' %}">Contact</a>
 							</li>
 						</ul>

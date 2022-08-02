@@ -6,17 +6,15 @@
 <div class="container">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            Home
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
         <a href="{% url 'blogs:posts' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            Blog
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
         <span class="stext-109 cl4">
-				{{ object.title }}
+			{{ object.title }}
 			</span>
     </div>
 </div>
@@ -76,7 +74,7 @@
                             <a href="#"
                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
                                 {% for tag in object.tag.values %}
-                                    {{ tag.name }}
+                                    #{{ tag.name }}
                                 {% endfor %}
                             </a>
                         </div>
@@ -338,27 +336,9 @@
                         <div class="flex-w m-r--5">
                             <a href="#"
                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Fashion
-                            </a>
-
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Lifestyle
-                            </a>
-
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Denim
-                            </a>
-
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Streetstyle
-                            </a>
-
-                            <a href="#"
-                               class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                Crafts
+                                {% for tag in object.tag.values %}
+                                {{ tag.name }}
+                                {% endfor %}
                             </a>
                         </div>
                     </div>
