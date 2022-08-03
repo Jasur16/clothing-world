@@ -51,7 +51,7 @@ class CommentModel(models.Model):
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
 
     def __str__(self):
-        return self.name
+        return f"{self.comment}\n{self.name}\n{self.email}\n{self.phone}"
 
     class Meta:
         verbose_name = _('comment')

@@ -20,7 +20,7 @@ class PostModelAdmin(admin.ModelAdmin):
 
 @admin.register(CommentModel)
 class CommentModelAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'phone']
+    list_display = ['name', 'email', 'phone', 'post']
     list_display_links = ['name', 'email', 'phone']
     search_fields = ['name']
 

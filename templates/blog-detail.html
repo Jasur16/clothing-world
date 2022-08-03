@@ -3,25 +3,25 @@
 
 {% block content %}
 <!-- breadcrumb -->
-<div class="container">
-    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-        <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
+<!--<div class="container">-->
+<!--    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">-->
+<!--&lt;!&ndash;        <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
 
-        <a href="{% url 'blogs:posts' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-        </a>
+<!--&lt;!&ndash;        <a href="{% url 'blogs:posts' %}" class="stext-109 cl8 hov-cl1 trans-04">&ndash;&gt;-->
+<!--&lt;!&ndash;            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;        </a>&ndash;&gt;-->
 
-        <span class="stext-109 cl4">
-			{{ object.title }}
-			</span>
-    </div>
-</div>
+<!--&lt;!&ndash;        <span class="stext-109 cl4">&ndash;&gt;-->
+<!--&lt;!&ndash;			{{ object.title }}&ndash;&gt;-->
+<!--&lt;!&ndash;			</span>&ndash;&gt;-->
+<!--    </div>-->
+<!--</div>-->
 
 
 <!-- Content page -->
-<section class="bg0 p-t-52 p-b-20">
+<section class="bg0 p-t-52 p-b-20 pt-5 mt-4" xmlns="http://www.w3.org/1999/html">
     <div class="container">
         <div class="row">
             <div class="col-md-8 col-lg-9 p-b-80">
@@ -53,7 +53,9 @@
 									<span class="cl12 m-l-4 m-r-6">|</span>
 								</span>
 								<span>
-									8 Comments
+                                    {% if object.comments.values %}
+									{{ object.comments.values.count }} Comments
+                                    {% endif %}
 								</span>
 							</span>
 
@@ -69,12 +71,11 @@
 							<span class="size-216 stext-116 cl8 p-t-4">
 								Tags
 							</span>
-
                         <div class="flex-w size-217">
                             <a href="#"
                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
                                 {% for tag in object.tag.values %}
-                                    #{{ tag.name }}
+                                #{{ tag.name }}
                                 {% endfor %}
                             </a>
                         </div>
@@ -90,9 +91,25 @@
                             Your email address will not be published. Required fields are marked *
                         </p>
 
-                        <form>
+                        <div style="{% if object.comments.values %}background-color: #dfdcff; color: black;{% endif %}" class="container pt-4">
+                            {% for comment in object.comments.values %}
+                                <div class="row mb-3">
+                                    <div class="col-6"><strong>{{ comment.name }}</strong></div>
+                                    <div class="col-6 text-right">{{ comment.created_at|timesince }}</div>
+                                    <div class="col-12">
+                                        <p>
+                                            {{ comment.comment }}
+                                        </p>
+                                        <hr>
+                                    </div>
+                                </div>
+                            {% endfor %}
+                        </div>
+
+                        <form action="{% url 'blogs:comment' pk=object.pk %}" method="post" class="mt-5">
+                            {% csrf_token %}
                             <div class="bor19 m-b-20">
-                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="cmt"
+                                <textarea class="stext-111 cl2 plh3 size-124 p-lr-18 p-tb-15" name="comment"
                                           placeholder="Comment..."></textarea>
                             </div>
 
@@ -107,8 +124,8 @@
                             </div>
 
                             <div class="bor19 size-218 m-b-30">
-                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="web"
-                                       placeholder="Website">
+                                <input class="stext-111 cl2 plh3 size-116 p-lr-18" type="text" name="phone"
+                                       placeholder="Phone">
                             </div>
 
                             <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
