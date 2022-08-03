@@ -38,9 +38,9 @@
 							<li class="{% if request.path == '/' %}active-menu{% endif %}">
 								<a href="{% url 'pages:home' %}">Home</a>
 								<ul class="sub-menu">
-									<li><a href="index.html">Homepage 1</a></li>
-									<li><a href="home-02.html">Homepage 2</a></li>
-									<li><a href="home-03.html">Homepage 3</a></li>
+									<li><a href="{% url 'pages:home' %}">Men</a></li>
+									<li><a href="{% url 'pages:women' %}">Women</a></li>
+									<li><a href="home-03.html">Other</a></li>
 								</ul>
 							</li>
 

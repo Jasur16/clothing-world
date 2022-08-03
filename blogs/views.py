@@ -7,7 +7,7 @@ from .forms import CommentModelForm
 class PostView(ListView):
     queryset = PostModel.objects.order_by('-id')
     template_name = 'blog.html'
-    # paginate_by = 2
+    paginate_by = 2
 
 
 class PostDetailView(DetailView):
@@ -17,7 +17,6 @@ class PostDetailView(DetailView):
 
 class CommentCreateView(CreateView):
     form_class = CommentModelForm
-    paginate_by = 2
 
     def form_valid(self, form):
         print(form.instance)
