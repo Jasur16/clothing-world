@@ -30,6 +30,7 @@ class PostModel(models.Model):
     title = models.CharField(max_length=255, verbose_name=_('title'))
     body = RichTextUploadingField(verbose_name=_('body'))
     image = models.ImageField(upload_to='posts', verbose_name=_('image'))
+    image_2 = models.ImageField(null=True, upload_to='posts_2', verbose_name=_('image_2'))
     auther = models.ForeignKey(AutherModel, related_name='posts', on_delete=models.RESTRICT)
     tag = models.ManyToManyField(PostTagModel, related_name='posts', verbose_name=_('tag'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))

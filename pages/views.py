@@ -1,7 +1,7 @@
 from django.shortcuts import render, reverse
 from django.views.generic import TemplateView, CreateView
 from blogs.models import PostModel
-from .models import MenBannerModel
+from .models import MenBannerModel, WomenBannerModel
 from .forms import ContactModelForm
 
 
@@ -20,6 +20,7 @@ class WomenView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['posts'] = PostModel.objects.order_by('-pk')[:3]
+        data['women_banners'] = WomenBannerModel.objects.filter(is_active=True).order_by('-pk')
         return data
 
 

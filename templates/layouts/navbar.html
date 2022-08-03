@@ -45,7 +45,7 @@
 							</li>
 
 							<li class="{% if request.path == 'shop/' %}active-menu{% endif %}">
-								<a href="product.html">Shop</a>
+								<a href="{% url 'shop:home' %}">Shop</a>
 							</li>
 
 							<li class="label1 {% if request.path == 'features/' %}active-menu{% endif %}" data-label1="hot">
@@ -216,7 +216,7 @@
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="{% static 'images/item-cart-01.jpg' %}" alt="IMG">
+							<img src="images/item-cart-01.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -232,7 +232,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="{% static 'images/item-cart-02.jpg' %}" alt="IMG">
+							<img src="images/item-cart-02.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -248,7 +248,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="{% static 'images/item-cart-03.jpg' %}" alt="IMG">
+							<img src="images/item-cart-03.jpg" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
