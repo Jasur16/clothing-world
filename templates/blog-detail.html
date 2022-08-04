@@ -2,22 +2,25 @@
 {% load static %}
 
 {% block content %}
+
 <!-- breadcrumb -->
-<!--<div class="container">-->
-<!--    <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">-->
-<!--&lt;!&ndash;        <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">&ndash;&gt;-->
-<!--&lt;!&ndash;            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+	<div class="container pt-5">
+		<div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+			<a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
+				Home
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
 
-<!--&lt;!&ndash;        <a href="{% url 'blogs:posts' %}" class="stext-109 cl8 hov-cl1 trans-04">&ndash;&gt;-->
-<!--&lt;!&ndash;            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>&ndash;&gt;-->
-<!--&lt;!&ndash;        </a>&ndash;&gt;-->
+			<a href="{% url 'blogs:posts' %}" class="stext-109 cl8 hov-cl1 trans-04">
+				Blog
+				<i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+			</a>
 
-<!--&lt;!&ndash;        <span class="stext-109 cl4">&ndash;&gt;-->
-<!--&lt;!&ndash;			{{ object.title }}&ndash;&gt;-->
-<!--&lt;!&ndash;			</span>&ndash;&gt;-->
-<!--    </div>-->
-<!--</div>-->
+			<span class="stext-109 cl4">
+				{{ object.title|title }}
+			</span>
+		</div>
+	</div>
 
 
 <!-- Content page -->
@@ -81,7 +84,7 @@
                         </div>
                     </div>
 
-                    <!--  -->
+                    <!-- Comments  -->
                     <div class="p-t-40">
                         <h5 class="mtext-113 cl2 p-b-12">
                             Leave a Comment
@@ -364,4 +367,6 @@
         </div>
     </div>
 </section>
+
+
 {% endblock %}

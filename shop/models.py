@@ -3,6 +3,30 @@ from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
 
 
+class CategoryModel(models.Model):
+    name = models.CharField(max_length=60, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'category'
+        verbose_name_plural = 'categories'
+
+
+class ProductTagModel(models.Model):
+    name = models.CharField(max_length=60, verbose_name=_('name'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.name
+
+    class Meta:
+        verbose_name = 'tag'
+        verbose_name_plural = 'tags'
+
+
 class ProductModel(models.Model):
     title = models.CharField(max_length=60, verbose_name=_('title'))
     short_description = models.CharField(max_length=255, verbose_name=_('short description'))
@@ -11,6 +35,18 @@ class ProductModel(models.Model):
     discount = models.PositiveSmallIntegerField(default=0, verbose_name=_('discount'))
     main_image = models.ImageField(upload_to='products', verbose_name=_('main image'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    category = models.ForeignKey(
+        CategoryModel,
+        on_delete=models.RESTRICT,
+        related_name='products',
+        verbose_name=_('category')
+    )
+    tags = models.ManyToManyField(
+        ProductTagModel,
+        related_name='products',
+        verbose_name=_('tags')
+    )
+    sku = models.CharField(max_length=50, unique=True, verbose_name=_('sku'))
 
     def get_price(self):
         if self.discount:

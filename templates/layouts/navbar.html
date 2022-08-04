@@ -40,7 +40,6 @@
 								<ul class="sub-menu">
 									<li><a href="{% url 'pages:home' %}">Men</a></li>
 									<li><a href="{% url 'pages:women' %}">Women</a></li>
-									<li><a href="home-03.html">Other</a></li>
 								</ul>
 							</li>
 
@@ -88,7 +87,7 @@
 		<div class="wrap-header-mobile">
 			<!-- Logo moblie -->
 			<div class="logo-mobile">
-				<a href="index.html"><img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
+				<a href="{% url 'pages:home' %}"><img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO"></a>
 			</div>
 
 			<!-- Icon header -->
@@ -119,17 +118,7 @@
 		<div class="menu-mobile">
 			<ul class="topbar-mobile">
 				<li>
-					<div class="left-top-bar">
-						Free shipping for standard order over $100
-					</div>
-				</li>
-
-				<li>
 					<div class="right-top-bar flex-w h-full">
-						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							Help & FAQs
-						</a>
-
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
 							My Account
 						</a>
@@ -139,7 +128,7 @@
 						</a>
 
 						<a href="#" class="flex-c-m p-lr-10 trans-04">
-							USD
+							RU
 						</a>
 					</div>
 				</li>
@@ -147,11 +136,10 @@
 
 			<ul class="main-menu-m">
 				<li>
-					<a href="index.html">Home</a>
+					<a href="{% url 'pages:home' %}">Home</a>
 					<ul class="sub-menu-m">
-						<li><a href="index.html">Homepage 1</a></li>
-						<li><a href="home-02.html">Homepage 2</a></li>
-						<li><a href="home-03.html">Homepage 3</a></li>
+						<li><a href="{% url 'pages:home' %}">Men</a></li>
+						<li><a href="{% url 'pages:women' %}">Women</a></li>
 					</ul>
 					<span class="arrow-main-menu-m">
 						<i class="fa fa-angle-right" aria-hidden="true"></i>
@@ -159,7 +147,7 @@
 				</li>
 
 				<li>
-					<a href="product.html">Shop</a>
+					<a href="{% url 'shop:home' %}">Shop</a>
 				</li>
 
 				<li>
@@ -167,7 +155,7 @@
 				</li>
 
 				<li>
-					<a href="blog.html">Blog</a>
+					<a href="{% url 'blogs:posts' %}">Blog</a>
 				</li>
 
 				<li>
@@ -175,7 +163,7 @@
 				</li>
 
 				<li>
-					<a href="contact.html">Contact</a>
+					<a href="{% url 'pages:contact' %}">Contact</a>
 				</li>
 			</ul>
 		</div>
@@ -216,7 +204,7 @@
 				<ul class="header-cart-wrapitem w-full">
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-01.jpg" alt="IMG">
+							<img src="{% static 'images/item-cart-01.jpg' %}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -232,7 +220,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-02.jpg" alt="IMG">
+							<img src="{% static 'images/item-cart-02.jpg' %}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">
@@ -248,7 +236,7 @@
 
 					<li class="header-cart-item flex-w flex-t m-b-12">
 						<div class="header-cart-item-img">
-							<img src="images/item-cart-03.jpg" alt="IMG">
+							<img src="{% static 'images/item-cart-03.jpg' %}" alt="IMG">
 						</div>
 
 						<div class="header-cart-item-txt p-t-8">

@@ -47,15 +47,11 @@
                             <div class="flex-w flex-sb-m p-t-18">
 									<span class="flex-w flex-m stext-111 cl2 p-r-30 m-tb-10">
 										<span>
-											<span class="cl4">By</span> Admin
+											<span class="cl4">By</span> {{ post.auther.full_name }}
 											<span class="cl12 m-l-4 m-r-6">|</span>
 										</span>
 										<span>
-                                            {% for comment in comments %}
-											{% if object.comment.values %}
-									        {{ object.comments.values.count }} Comments
-                                            {% endif %}
-                                            {% endfor %}
+
 										</span>
 									</span>
 
@@ -71,13 +67,15 @@
                     {% endfor %}
                     <!-- Pagination -->
                     <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
-                        <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7 active-pagination1">
-                            1
+                        {% for page in page_obj.paginator.page_range %}
+                        <a href="?page={{ page }}"
+                           class="flex-c-m how-pagination1 trans-04 m-all-7
+                           {% if page == page_obj.number %}
+                                active-pagination1
+                           {%  endif%}">
+                            {{ page }}
                         </a>
-
-                        <a href="#" class="flex-c-m how-pagination1 trans-04 m-all-7">
-                            2
-                        </a>
+                        {% endfor %}
                     </div>
                 </div>
             </div>
