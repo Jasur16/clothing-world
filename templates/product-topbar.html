@@ -25,45 +25,17 @@
         <div class="wrap-filter flex-w bg6 w-full p-lr-40 p-t-27 p-lr-15-sm">
             <div class="filter-col1 p-r-15 p-b-27">
                 <div class="mtext-102 cl2 p-b-15">
-                    Sort By
+                    Categories
                 </div>
 
                 <ul>
+                    {% for cat in categories %}
                     <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Default
+                        <a href="?cat={{ cat.pk }}" class="filter-link{% if request.GET.cat == cat.pk|stringformat:'i' %}-active{% endif %} stext-106 trans-04">
+                            {{ cat.name }}
                         </a>
                     </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Popularity
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Average rating
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-                            Newness
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Price: Low to High
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Price: High to Low
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -185,30 +157,15 @@
                 </div>
 
                 <div class="flex-w p-t-4 m-r--5">
-                    <a href="#"
+                    {% for tag in tags %}
+                    <a href="?tag={{ tag.pk }}" style="
+                    {% if request.GET.tag == tag.pk|stringformat:'i' %}
+                        background-color: #747dd9; color: #fff;
+                    {% endif %}"
                        class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Fashion
+                        {{ tag.name }}
                     </a>
-
-                    <a href="#"
-                       class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Lifestyle
-                    </a>
-
-                    <a href="#"
-                       class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Denim
-                    </a>
-
-                    <a href="#"
-                       class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Streetstyle
-                    </a>
-
-                    <a href="#"
-                       class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                        Crafts
-                    </a>
+                    {% endfor %}
                 </div>
             </div>
         </div>
