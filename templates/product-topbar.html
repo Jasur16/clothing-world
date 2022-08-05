@@ -31,7 +31,8 @@
                 <ul>
                     {% for cat in categories %}
                     <li class="p-b-6">
-                        <a href="?cat={{ cat.pk }}" class="filter-link{% if request.GET.cat == cat.pk|stringformat:'i' %}-active{% endif %} stext-106 trans-04">
+                        <a onclick="addUrlParameter('cat', {{ cat.pk }})"
+                           class="filter-link{% if request.GET.cat == cat.pk|stringformat:'i' %}-active text-primary{% endif %}" style="cursor: pointer; color: #aaa;">
                             {{ cat.name }}
                         </a>
                     </li>
@@ -46,40 +47,26 @@
 
                 <ul>
                     <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
+                        <a href="#" class="filter-link stext-106 trans-04">
                             All
                         </a>
                     </li>
-
                     <li class="p-b-6">
                         <a href="#" class="filter-link stext-106 trans-04">
-                            $0.00 - $50.00
+                            Low To High
+                        </a>
+                    </li>
+                    <li class="p-b-6">
+                        <a href="#" class="filter-link stext-106 trans-04">
+                            High To Low
+                        </a>
+                    </li>
+                    <li class="p-b-6">
+                        <a href="#" class="filter-link stext-106 trans-04">
+                            Sale
                         </a>
                     </li>
 
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            $50.00 - $100.00
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            $100.00 - $150.00
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            $150.00 - $200.00
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            $200.00+
-                        </a>
-                    </li>
                 </ul>
             </div>
 
@@ -158,7 +145,7 @@
 
                 <div class="flex-w p-t-4 m-r--5">
                     {% for tag in tags %}
-                    <a href="?tag={{ tag.pk }}" style="
+                    <a onclick="addUrlParameter('tag', {{ tag.pk }})" style="cursor: pointer;
                     {% if request.GET.tag == tag.pk|stringformat:'i' %}
                         background-color: #747dd9; color: #fff;
                     {% endif %}"

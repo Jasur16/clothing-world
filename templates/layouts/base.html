@@ -233,6 +233,9 @@
 	<script src="{% static 'js/slick-custom.js' %}"></script>
 <!--===============================================================================================-->
 	<script src="{% static 'vendor/parallax100/parallax100.js' %}"></script>
+	{% block extra_js %}
+
+	{% endblock %}
 	<script>
         $('.parallax100').parallax100();
 	</script>
