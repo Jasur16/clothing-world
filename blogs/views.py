@@ -33,4 +33,5 @@ class CommentCreateView(CreateView):
 
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
-        data['comments'] = CommentModelForm.object.all()
+        data['comments'] = CommentModelForm.objects.all()
+        return data
