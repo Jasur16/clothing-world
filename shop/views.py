@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView
-from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel
+from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel
 
 
 class ShopView(ListView):
@@ -25,6 +25,10 @@ class ShopView(ListView):
         if bar:
             qs = qs.filter(bar_category_id=bar)
 
+        color = self.request.GET.get('color')
+        if color:
+            qs = qs.filter(colors=color)
+
         return qs
 
     def get_context_data(self, *, object_list=None, **kwargs):
@@ -32,6 +36,8 @@ class ShopView(ListView):
         data['categories'] = CategoryModel.objects.all()
         data['tags'] = ProductTagModel.objects.all()
         data['bar_categories'] = BarCategoryModel.objects.all()
+        data['sizes'] = SizeModel.objects.all()
+        data['colors'] = ColorModel.objects.all()
         return data
 
 
@@ -42,4 +48,6 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data()
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)
+        data['sizes'] = SizeModel.objects.all()
+        data['colors'] = ColorModel.objects.all()
         return data

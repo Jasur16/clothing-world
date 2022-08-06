@@ -17,10 +17,7 @@
                 {{ product.title }}
             </a>
 
-            <span class="stext-105 cl3">
-									${{ product.get_price }} {% if product.is_discount %} <del
-                    class="text-secondary pl-2">{{ product.price }}</del> {% endif %}
-								</span>
+            <span class="stext-105 cl3">${{ product.get_price }} {% if product.is_discount %} <del class="text-secondary pl-2">{{ product.price }}</del> {% endif %}</span>
         </div>
 
         <div class="block2-txt-child2 flex-r p-t-3">

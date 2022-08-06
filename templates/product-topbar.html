@@ -2,7 +2,7 @@
 <div class="flex-w flex-sb-m p-b-52">
     <div class="flex-w flex-l-m filter-tope-group m-tb-10">
         {% for bar in bar_categories %}
-        <a onclick="addUrlParameter('bar', {{ bar.pk }})" style="cursor: pointer"
+        <a onclick="addUrlParameter('bar', {{ bar.pk }})"
            class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5
            {% if request.GET.bar == bar.pk|stringformat:'i' %} how-active1 {% endif %}">
             {{ bar.name }}
@@ -36,7 +36,8 @@
                     {% for cat in categories %}
                     <li class="p-b-6">
                         <a onclick="addUrlParameter('cat', {{ cat.pk }})"
-                           class="filter-link{% if request.GET.cat == cat.pk|stringformat:'i' %}-active text-primary{% endif %}" style="cursor: pointer; color: #aaa;">
+                           class="filter-link{% if request.GET.cat == cat.pk|stringformat:'i' %}-active text-primary{% endif %}"
+                           style="cursor: pointer; color: #aaa;">
                             {{ cat.name }}
                         </a>
                     </li>
@@ -49,24 +50,24 @@
                     Price
                 </div>
 
-                <ul>
+                <ul style="color: #999;" onchange="addUrlParameter('sort', this.value)">
                     <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            All
-                        </a>
+                            <a  class="filter-link stext-106 trans-04">
+                                All
+                            </a>
                     </li>
                     <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
+                        <a  class="filter-link stext-106 trans-04">
                             Low To High
                         </a>
                     </li>
                     <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
+                        <a class="filter-link stext-106 trans-04">
                             High To Low
                         </a>
                     </li>
                     <li class="p-b-6">
-                        <a href="#" class="filter-link stext-106 trans-04">
+                        <a class="filter-link stext-106 trans-04">
                             Sale
                         </a>
                     </li>
@@ -80,65 +81,18 @@
                 </div>
 
                 <ul>
+                    {% for color in colors %}
                     <li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #222;">
+									<span class="fs-15 lh-12 m-r-6" style="color: {{ color.code }};">
 										<i class="zmdi zmdi-circle"></i>
 									</span>
 
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Black
+                        <a onclick="addUrlParameter('color', {{ color.pk }})"
+                           class="filter-link{% if request.GET.color == color.pk|stringformat:'i' %}-active text-primary{% endif %}">
+                            {{ color.code }}
                         </a>
                     </li>
-
-                    <li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #4272d7;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-                        <a href="#" class="filter-link stext-106 trans-04 filter-link-active">
-                            Blue
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #b3b3b3;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Grey
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #00ad5f;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Green
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #fa4251;">
-										<i class="zmdi zmdi-circle"></i>
-									</span>
-
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            Red
-                        </a>
-                    </li>
-
-                    <li class="p-b-6">
-									<span class="fs-15 lh-12 m-r-6" style="color: #aaa;">
-										<i class="zmdi zmdi-circle-o"></i>
-									</span>
-
-                        <a href="#" class="filter-link stext-106 trans-04">
-                            White
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 
@@ -170,7 +124,8 @@
                     <i class="zmdi zmdi-search"></i>
                 </button>
 
-                <input value="{{ request.GET.search }}" class="mtext-107 cl2 size-114 plh2 p-r-15" type="text" name="search"
+                <input value="{{ request.GET.search }}" class="mtext-107 cl2 size-114 plh2 p-r-15" type="text"
+                       name="search"
                        placeholder="Search">
             </div>
         </form>
