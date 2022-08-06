@@ -1,9 +1,13 @@
 {% load static %}
 <div class="flex-w flex-sb-m p-b-52">
     <div class="flex-w flex-l-m filter-tope-group m-tb-10">
-        <button class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1">
-            All Products
-        </button>
+        {% for bar in bar_categories %}
+        <a onclick="addUrlParameter('bar', {{ bar.pk }})" style="cursor: pointer"
+           class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5
+           {% if request.GET.bar == bar.pk|stringformat:'i' %} how-active1 {% endif %}">
+            {{ bar.name }}
+        </a>
+        {% endfor %}
     </div>
 
     <div class="flex-w flex-c-m m-tb-10">

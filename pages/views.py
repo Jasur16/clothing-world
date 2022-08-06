@@ -1,6 +1,7 @@
 from django.shortcuts import render, reverse
 from django.views.generic import TemplateView, CreateView
 from blogs.models import PostModel
+from shop.models import BarCategoryModel, CategoryModel
 from .models import MenBannerModel, WomenBannerModel
 from .forms import ContactModelForm
 
@@ -11,6 +12,8 @@ class HomeView(TemplateView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data(**kwargs)
         data['men_banners'] = MenBannerModel.objects.filter(is_active=True).order_by('-pk')
+        data['bar_categories'] = BarCategoryModel.objects.all()
+        data['categories'] = CategoryModel.objects.all()
         return data
 
 

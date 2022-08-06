@@ -75,12 +75,12 @@
 								Tags
 							</span>
                         <div class="flex-w size-217">
+                            {% for tag in object.tag.values %}
                             <a href="#"
                                class="flex-c-m stext-107 cl6 size-301 bor7 p-lr-15 hov-tag1 trans-04 m-r-5 m-b-5">
-                                {% for tag in object.tag.values %}
-                                #{{ tag.name }}
-                                {% endfor %}
+                                {{ tag.name }}
                             </a>
+                            {% endfor %}
                         </div>
                     </div>
 
