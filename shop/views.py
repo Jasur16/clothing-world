@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
@@ -55,7 +56,20 @@ class ProductDetailView(DetailView):
         return data
 
 
+@login_required
 def wishlist_view(request, pk):
     product = get_object_or_404(ProductModel, pk=pk)
     WishlistModel.create_or_delete(request.user, product)
     return redirect(request.GET.get('next', '/'))
+
+
+class WishlistView(ListView):
+    template_name = 'wishlist.html'
+
+    def get_queryset(self):
+        return WishlistModel.objects.filter(user=self.request.user)
+
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data()
+        data['products'] = ProductModel.objects.all()
+        return data

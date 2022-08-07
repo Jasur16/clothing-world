@@ -1,9 +1,10 @@
 {% load static %}
+{% load my_tags %}
 <!-- Block2 -->
 <div class="block2">
     <div class="block2-pic hov-img0">
         <a href="{% url 'shop:detail' pk=product.pk %}">
-            <img style="height: 40 0px" src="{{ product.main_image.url }}" alt="IMG-PRODUCT">
+            <img style="height: 400px" src="{{ product.main_image.url }}" alt="IMG-PRODUCT">
         </a>
 
         <a href=""
@@ -23,13 +24,18 @@
 
         <div class="block2-txt-child2 flex-r p-t-3">
             {% if request.user.is_authenticated %}
-            <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+            {% if product|is_wishlist:request %}
+            <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"
+               class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
                 <img class="icon-heart1 dis-block trans-04"
-                     src="{% static 'images/icons/icon-heart-01.png' %}" alt="ICON">
-
-                <img class="icon-heart2 dis-block trans-04 ab-t-l"
                      src="{% static 'images/icons/icon-heart-02.png' %}" alt="ICON">
             </a>
+            {% else %}
+            <a href="" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+                <img class="icon-heart2 dis-block trans-04 ab-t-l"
+                     src="{% static 'images/icons/icon-heart-01.png' %}" alt="ICON">
+            </a>
+            {% endif %}
             {% endif %}
         </div>
     </div>

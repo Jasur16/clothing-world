@@ -1,0 +1,33 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container mb-5 pb-5">
+
+</div>
+
+<!-- Product -->
+<div class="bg0 m-t-23 p-b-140">
+    <div class="container">
+
+        <div class="row isotope-grid">
+            {% for product in products %}
+            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                {% include 'product-item.html' %}
+            </div>
+            {% endfor %}
+        </div>
+
+
+        <!-- Load more -->
+        <div class="flex-c-m flex-w w-full p-t-45">
+            <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+                Load More
+            </a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
