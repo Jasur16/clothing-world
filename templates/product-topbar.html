@@ -10,6 +10,10 @@
         {% endfor %}
     </div>
 
+    <div>
+        <input type="text" class="js-range-slider" name="my_range" value="" />
+    </div>
+
     <div class="flex-w flex-c-m m-tb-10">
         <div class="flex-c-m stext-106 cl6 size-104 bor4 pointer hov-btn3 trans-04 m-r-8 m-tb-4 js-show-filter">
             <i class="icon-filter cl2 m-r-6 fs-15 trans-04 zmdi zmdi-filter-list"></i>
@@ -50,24 +54,24 @@
                     Price
                 </div>
 
-                <ul style="color: #999;" onchange="addUrlParameter('sort', this.value)">
+                <ul style="color: #999;">
                     <li class="p-b-6">
-                            <a  class="filter-link stext-106 trans-04">
+                            <a href="" class="filter-link stext-106 trans-04">
                                 All
                             </a>
                     </li>
                     <li class="p-b-6">
-                        <a  class="filter-link stext-106 trans-04">
+                        <a href="" class="filter-link stext-106 trans-04">
                             Low To High
                         </a>
                     </li>
                     <li class="p-b-6">
-                        <a class="filter-link stext-106 trans-04">
+                        <a href="" class="filter-link stext-106 trans-04">
                             High To Low
                         </a>
                     </li>
                     <li class="p-b-6">
-                        <a class="filter-link stext-106 trans-04">
+                        <a href="" class="filter-link stext-106 trans-04">
                             Sale
                         </a>
                     </li>
@@ -89,7 +93,7 @@
 
                         <a onclick="addUrlParameter('color', {{ color.pk }})"
                            class="filter-link{% if request.GET.color == color.pk|stringformat:'i' %}-active text-primary{% endif %}">
-                            {{ color.code }}
+                            {{ color.name }}
                         </a>
                     </li>
                     {% endfor %}

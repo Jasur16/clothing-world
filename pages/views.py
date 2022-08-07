@@ -12,25 +12,25 @@ class HomeView(ListView):
     def get_queryset(self):
         qs = ProductModel.objects.all()
 
-        # cat = self.request.GET.get('cat')
-        # if cat:
-        #     qs = qs.filter(category_id=cat)
-        #
-        # tag = self.request.GET.get('tag')
-        # if tag:
-        #     qs = qs.filter(tags=tag)
-        #
-        # bar = self.request.GET.get('bar')
-        # if bar:
-        #     qs = qs.filter(bar_category_id=bar)
-        #
-        # color = self.request.GET.get('color')
-        # if color:
-        #     qs = qs.filter(colors=color)
+        cat = self.request.GET.get('cat')
+        if cat:
+            qs = qs.filter(category_id=cat)
+
+        tag = self.request.GET.get('tag')
+        if tag:
+            qs = qs.filter(tags=tag)
+
+        bar = self.request.GET.get('bar')
+        if bar:
+            qs = qs.filter(bar_category_id=bar)
+
+        color = self.request.GET.get('color')
+        if color:
+            qs = qs.filter(colors=color)
 
         return qs
 
-    def get_context_data(self, **kwargs):
+    def get_context_data(self, object_list=None, **kwargs):
         data = super().get_context_data(**kwargs)
         data['men_banners'] = MenBannerModel.objects.filter(is_active=True).order_by('-pk')
         data['categories'] = CategoryModel.objects.all()

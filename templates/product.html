@@ -42,7 +42,8 @@
 {% endblock %}
 
 {% block extra_js %}
-    <script>
+
+<script>
         function addUrlParameter(name, value) {
             let searchParameter = new URLSearchParams(window.location.search)
             if (searchParameter.has(name) && searchParameter.get(name) == value) { <!-- cat=2&tag=1 -->
@@ -53,5 +54,8 @@
 
             window.location.search = searchParameter.toString()
         }
-    </script>
+
+
+</script>
+
 {% endblock %}

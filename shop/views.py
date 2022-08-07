@@ -1,6 +1,7 @@
-from django.shortcuts import render
+from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
-from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel
+from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
+    ProductDetailImageModel, WishlistModel
 
 
 class ShopView(ListView):
@@ -50,4 +51,11 @@ class ProductDetailView(DetailView):
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)
         data['sizes'] = SizeModel.objects.all()
         data['colors'] = ColorModel.objects.all()
+        data['detail_images'] = ProductDetailImageModel.objects.all()
         return data
+
+
+def wishlist_view(request, pk):
+    product = get_object_or_404(ProductModel, pk=pk)
+    WishlistModel.create_or_delete(request.user, product)
+    return redirect(request.GET.get('next', '/'))

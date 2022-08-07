@@ -1,6 +1,9 @@
-from django.db import models
+from django.contrib.auth import get_user_model
+from django.db import models, IntegrityError
 from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
+
+UserModel = get_user_model()
 
 
 class BarCategoryModel(models.Model):
@@ -15,6 +18,21 @@ class BarCategoryModel(models.Model):
     class Meta:
         verbose_name = 'bar_category'
         verbose_name_plural = 'bar_categories'
+
+
+class ProductDetailImageModel(models.Model):
+    title = models.CharField(null=True, max_length=255, verbose_name=_('title'))
+    image_1 = models.ImageField(upload_to='detail_image', verbose_name=_('image_1'))
+    image_2 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_2'))
+    image_3 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_3'))
+    created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+
+    def __str__(self):
+        return self.title
+
+    class Meta:
+        verbose_name = 'detail_image'
+        verbose_name_plural = 'detail_images'
 
 
 class CategoryModel(models.Model):
@@ -54,6 +72,7 @@ class SizeModel(models.Model):
 
 
 class ColorModel(models.Model):
+    name = models.CharField(max_length=60, verbose_name=_('name'), null=True)
     code = models.CharField(max_length=60, verbose_name=_('code'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
 
@@ -73,6 +92,13 @@ class ProductModel(models.Model):
     discount = models.PositiveSmallIntegerField(default=0, verbose_name=_('discount'))
     main_image = models.ImageField(upload_to='products', verbose_name=_('main image'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+    detail_images = models.ForeignKey(
+        ProductDetailImageModel,
+        on_delete=models.CASCADE,
+        related_name='products',
+        verbose_name=_('detail images'),
+        null=True
+    )
     category = models.ForeignKey(
         CategoryModel,
         on_delete=models.RESTRICT,
@@ -117,3 +143,23 @@ class ProductModel(models.Model):
     class Meta:
         verbose_name = 'product'
         verbose_name_plural = 'products'
+
+
+class WishlistModel(models.Model):
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='wishlists', verbose_name=_('user'))
+    product = models.ForeignKey(ProductModel, on_delete=models.CASCADE, verbose_name=_('product'))
+
+    @staticmethod
+    def create_or_delete(user, product):
+        try:
+            return WishlistModel.objects.create(user=user, product=product)
+        except IntegrityError:
+            return WishlistModel.objects.get(user=user, product=product).delete()
+
+    def __str__(self):
+        return f"{self.user.get_full_name()} | {self.product.title}"
+
+    class Meta:
+        verbose_name = 'wishlist'
+        verbose_name_plural = 'wishlists'
+        unique_together = 'user', 'product'
