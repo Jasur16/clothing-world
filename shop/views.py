@@ -1,4 +1,5 @@
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView
 from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
@@ -40,6 +41,7 @@ class ShopView(ListView):
         data['bar_categories'] = BarCategoryModel.objects.all()
         data['sizes'] = SizeModel.objects.all()
         data['colors'] = ColorModel.objects.all()
+        data['products'] = ProductModel.objects.all()
         return data
 
 
@@ -50,9 +52,9 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data()
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)
-        data['sizes'] = SizeModel.objects.all()
-        data['colors'] = ColorModel.objects.all()
-        data['detail_images'] = ProductDetailImageModel.objects.all()
+        # data['sizes'] = SizeModel.objects.all()
+        # data['colors'] = ColorModel.objects.all()
+        # data['detail_images'] = ProductDetailImageModel.objects.all()
         return data
 
 
@@ -63,13 +65,25 @@ def wishlist_view(request, pk):
     return redirect(request.GET.get('next', '/'))
 
 
-class WishlistView(ListView):
+class WishlistView(LoginRequiredMixin, ListView):
     template_name = 'wishlist.html'
 
     def get_queryset(self):
-        return WishlistModel.objects.filter(user=self.request.user)
+        return ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
 
-    def get_context_data(self, *, object_list=None, **kwargs):
-        data = super().get_context_data()
-        data['products'] = ProductModel.objects.all()
-        return data
+    # def get_context_data(self, *, object_list=None, **kwargs):
+    #     data = super().get_context_data()
+    #     data['products'] = ProductModel.objects.all()
+    #     return data
+
+
+def update_cart_view(request, id):
+    cart = request.session.get('cart', []) # cart = []
+
+    if id in cart:
+        cart.remove(id)
+    else:
+        cart.append(id)
+
+    request.session['cart'] = cart  # {'cart': [1]}
+    return redirect(request.GET.get('next', '/'))
