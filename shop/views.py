@@ -8,6 +8,7 @@ from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryMod
 
 class ShopView(ListView):
     template_name = 'product.html'
+    paginate_by = 12
 
     def get_queryset(self):
         qs = ProductModel.objects.all()

@@ -1,0 +1,38 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+
+{% block content %}
+		<div class="wrapper bg-image" style="background-image: url({% static 'images/blur.jpg' %}); width: 100%; ">
+			<div class="inner">
+				<div class="image-holder">
+					<img style="width: 100%;" src="{% static 'images/image-u.jpg' %}" alt="">
+				</div>
+				<form action="{% url 'registration' %}" method="post">
+					{% csrf_token %}
+					<h3>Registration Form</h3>
+					<div class="form-group">
+						<input name="first_name" type="text" placeholder="First Name" class="form-control">
+						<input name="last_name" type="text" placeholder="Last Name" class="form-control">
+					</div>
+					<span class="text-danger">{{ form.errors.first_name }}</span>
+					<div class="form-wrapper">
+						<input name="username" type="text" placeholder="Username" class="form-control">
+						<i class="zmdi zmdi-account"></i>
+						<span style="color: #ff0000; font-weight: bold;">{{ form.errors.username }}</span>
+					</div>
+					<div class="form-wrapper">
+						<input name="password" type="password" placeholder="Password" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<div class="form-wrapper">
+						<input name="confirm_password" type="password" placeholder="Confirm Password" class="form-control">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<span style="color: #ff0000; font-weight: bold;">{{ form.errors.confirm_password }}</span>
+					<button>Register
+						<i class="zmdi zmdi-arrow-right"></i>
+					</button>
+				</form>
+			</div>
+		</div>
+{% endblock %}

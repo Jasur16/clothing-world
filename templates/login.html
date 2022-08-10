@@ -1,0 +1,27 @@
+{% extends 'layouts/base.html' %}
+{% load static %}
+{% block content %}
+<div class="wrapper bg-image" style="background-image: url({% static 'images/blur.jpg' %}); width: 100%; ">
+    <div class="inner">
+        <div class="image-holder">
+            <img style="width: 100%;" src="{% static 'images/image-u.jpg' %}" alt="">
+        </div>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <h3>Login Form</h3>
+            <div class="form-wrapper">
+                <input name="username" type="text" placeholder="Username" class="form-control">
+                <i class="zmdi zmdi-account"></i>
+            </div>
+            <div class="form-wrapper">
+                <input name="password" type="password" placeholder="Password" class="form-control">
+                <i class="zmdi zmdi-lock"></i>
+            </div>
+            <a href="{% url 'registration' %}">Create account</a>
+            <button>Login
+                <i class="zmdi zmdi-arrow-right"></i>
+            </button>
+        </form>
+    </div>
+</div>
+{% endblock %}

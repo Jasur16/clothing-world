@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models, IntegrityError
 from django.db.models import Sum
+from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
 
@@ -131,10 +132,8 @@ class ProductModel(models.Model):
     )
     sku = models.CharField(max_length=50, unique=True, verbose_name=_('sku'))
 
-    def get_price(self):
-        if self.discount:
-            return ((100 - self.discount) / 100) * self.price
-        return self.price
+    def new(self):
+        return (timezone.now() - self.created_at).days <= 5
 
     @staticmethod
     def get_cart_info(request):
