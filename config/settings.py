@@ -22,7 +22,7 @@ INSTALLED_APPS = [
     'pages',
     'blogs',
     'shop',
-    'users',
+    'account',
     'orders',
 ]
 
@@ -110,7 +110,12 @@ CKEDITOR_CONFIGS = {
     },
 }
 
-try:
-    from .local_settings import *
-except ImportError:
-    pass
+# try:
+#     from .local_settings import *
+# except ImportError:
+#     pass
+
+from django.contrib.messages import constants as messages
+MESSAGE_TAGS = {
+    messages.SUCCESS: 'alert alert-success',
+}
