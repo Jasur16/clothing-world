@@ -14,24 +14,22 @@
 					{% csrf_token %}
 					<h3>Registration Form</h3>
 					<div class="form-group">
-						<input name="first" type="text" placeholder="First Name" class="form-control">
-						<input name="last" type="text" placeholder="Last Name" class="form-control">
+						<input name="first_name" type="text" placeholder="First Name" class="form-control" required="True">
+						<input name="last_name" type="text" placeholder="Last Name" class="form-control" required="True">
 					</div>
-					<span class="text-danger">{{ form.errors.first_name }}</span>
 					<div class="form-wrapper">
-						<input name="username" type="text" placeholder="Username" class="form-control">
+						<input name="username" type="text" placeholder="Username" class="form-control" required="True">
 						<i class="zmdi zmdi-account"></i>
-						<span style="color: #ff0000; font-weight: bold;">{{ form.errors.username }}</span>
 					</div>
 					<div class="form-wrapper">
-						<input name="password" type="password" placeholder="Password" class="form-control">
+						<input name="password" type="password" placeholder="Password" class="form-control" required="True">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-<!--					<div class="form-wrapper">-->
-<!--						<input name="confirm_password" type="password" placeholder="Confirm Password" class="form-control">-->
-<!--						<i class="zmdi zmdi-lock"></i>-->
-<!--					</div>-->
-					<span style="color: #ff0000; font-weight: bold;">{{ form.errors.confirm_password }}</span>
+					<div class="form-wrapper">
+						<input name="confirm" type="password" placeholder="Confirm Password" class="form-control" required="True">
+						<i class="zmdi zmdi-lock"></i>
+					</div>
+					<span style="color: #ff0000; font-weight: bold;">{{ form.errors }}</span>
 					<button>Register
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>

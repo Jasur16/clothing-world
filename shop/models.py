@@ -100,7 +100,8 @@ class ProductModel(models.Model):
         on_delete=models.CASCADE,
         related_name='products',
         verbose_name=_('detail images'),
-        null=True
+        null=True,
+        blank=True
     )
     category = models.ForeignKey(
         CategoryModel,

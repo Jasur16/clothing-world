@@ -3330,3 +3330,7 @@ input.num-product::-webkit-inner-spin-button {
   }
 
 }
+
+.active_lang{
+    background-color: #7982da;
+}

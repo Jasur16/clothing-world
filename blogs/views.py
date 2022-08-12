@@ -3,6 +3,7 @@ from django.shortcuts import render, get_object_or_404, reverse
 from django.views.generic import ListView, DetailView, CreateView
 from .models import PostModel
 from .forms import CommentModelForm
+from shop.views import CategoryModel, ProductModel, ProductTagModel
 
 
 class PostView(ListView):
@@ -10,10 +11,12 @@ class PostView(ListView):
     template_name = 'blog.html'
     paginate_by = 2
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     data = super().get_context_data(**kwargs)
-    #     data['posts'] = PostModel.object.all()
-    #     return data
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data()
+        data['categories'] = CategoryModel.objects.all()
+        data['products'] = ProductModel.objects.all()
+        data['tags'] = ProductTagModel.objects.all()
+        return data
 
 
 class PostDetailView(DetailView):
