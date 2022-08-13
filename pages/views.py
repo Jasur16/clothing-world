@@ -2,7 +2,7 @@ from django.shortcuts import render, reverse
 from django.views.generic import TemplateView, CreateView, ListView
 from blogs.models import PostModel
 from shop.models import BarCategoryModel, CategoryModel, ProductModel, ProductTagModel, SizeModel, ColorModel
-from .models import MenBannerModel, WomenBannerModel
+from .models import MenBannerModel, WomenBannerModel, AboutModel
 from .forms import ContactModelForm
 
 
@@ -50,6 +50,11 @@ class WomenView(TemplateView):
         data['posts'] = PostModel.objects.order_by('-pk')[:3]
         data['women_banners'] = WomenBannerModel.objects.filter(is_active=True).order_by('-pk')
         return data
+
+
+class AboutView(ListView):
+    model = AboutModel
+    template_name = 'about.html'
 
 
 class ContactView(CreateView):

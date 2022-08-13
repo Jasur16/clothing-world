@@ -1,80 +1,48 @@
-{% load static %}
+{% load static i18n %}
 <!-- Footer -->
 <footer class="bg3 p-t-75 p-b-32">
     <div class="container">
         <div class="row">
-            <div class="col-sm-6 col-lg-3 p-b-50">
+            <div class="col-sm-6 col-lg-4 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Categories
+                    {% translate 'Категории' %}
                 </h4>
 
                 <ul>
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Women
+                            {% translate 'Женщины' %}
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Men
+                            {% translate 'Мужчины' %}
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shoes
+                            {% translate 'Обувь' %}
                         </a>
                     </li>
 
                     <li class="p-b-10">
                         <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Watches
+                            {% translate 'Часы' %}
                         </a>
                     </li>
                 </ul>
             </div>
 
-            <div class="col-sm-6 col-lg-3 p-b-50">
+            <div class="col-sm-6 col-lg-4 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Help
-                </h4>
-
-                <ul>
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Track Order
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Returns
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            Shipping
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            FAQs
-                        </a>
-                    </li>
-                </ul>
-            </div>
-
-            <div class="col-sm-6 col-lg-3 p-b-50">
-                <h4 class="stext-301 cl0 p-b-30">
-                    GET IN TOUCH
+                    {% translate 'СВЯЗАТЬСЯ' %}
                 </h4>
 
                 <p class="stext-107 cl7 size-201">
-                    Any questions? Let us know in store at 8th floor, 379 Hudson St, New York, NY 10018 or call us on
-                    (+1) 96 716 6879
+                    {% blocktrans %}Любые вопросы? Сообщите нам об этом в магазине на 8-м этаже, 379 Hudson St, New York, NY 10018 или позвоните нам по телефону
+                     (+1) 96 716 6879{% endblocktrans %}
                 </p>
 
                 <div class="p-t-27">
@@ -92,9 +60,9 @@
                 </div>
             </div>
 
-            <div class="col-sm-6 col-lg-3 p-b-50">
+            <div class="col-sm-6 col-lg-4 p-b-50">
                 <h4 class="stext-301 cl0 p-b-30">
-                    Newsletter
+                    {% translate 'Новостная рассылка' %}
                 </h4>
 
                 <form>

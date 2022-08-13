@@ -1,5 +1,6 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
+from ckeditor_uploader.fields import RichTextUploadingField
 
 
 class ContactModel(models.Model):
@@ -44,3 +45,19 @@ class WomenBannerModel(models.Model):
     class Meta:
         verbose_name = 'women_banner'
         verbose_name_plural = 'women_banners'
+
+
+class AboutModel(models.Model):
+    our_story = RichTextUploadingField(verbose_name=_('our story'))
+    our_story_image = models.ImageField(upload_to='about_img', verbose_name=_('our store image'))
+    our_mission = RichTextUploadingField(verbose_name=_('our mission'))
+    our_mission_image = models.ImageField(upload_to='about_img', verbose_name=_('our mission image'), null=True)
+    banner_image = models.ImageField(upload_to='about_img', verbose_name=_('banner image'))
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return f"{self.our_story}{self.our_mission}"
+
+    class Meta:
+        verbose_name = 'about'
+        verbose_name_plural = 'abouts'

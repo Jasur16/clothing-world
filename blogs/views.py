@@ -11,17 +11,17 @@ class PostView(ListView):
     template_name = 'blog.html'
     paginate_by = 2
 
-    def get_context_data(self, *, object_list=None, **kwargs):
+
+class PostDetailView(DetailView):
+    model = PostModel
+    template_name = 'blog-detail.html'
+
+    def get_context_data(self, **kwargs):
         data = super().get_context_data()
         data['categories'] = CategoryModel.objects.all()
         data['products'] = ProductModel.objects.all()
         data['tags'] = ProductTagModel.objects.all()
         return data
-
-
-class PostDetailView(DetailView):
-    model = PostModel
-    template_name = 'blog-detail.html'
 
 
 class CommentCreateView(CreateView):

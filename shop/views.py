@@ -55,7 +55,7 @@ class ProductDetailView(DetailView):
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)
         # data['sizes'] = SizeModel.objects.all()
         # data['colors'] = ColorModel.objects.all()
-        # data['detail_images'] = ProductDetailImageModel.objects.all()
+        data['detail_images'] = ProductDetailImageModel.objects.all().exclude(id=self.object.pk)
         return data
 
 
@@ -79,7 +79,7 @@ class WishlistView(LoginRequiredMixin, ListView):
 
 
 def update_cart_view(request, id):
-    cart = request.session.get('cart', []) # cart = []
+    cart = request.session.get('cart', [])  # cart = []
 
     if id in cart:
         cart.remove(id)

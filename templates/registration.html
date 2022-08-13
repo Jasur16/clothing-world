@@ -21,15 +21,16 @@
 						<input name="username" type="text" placeholder="Username" class="form-control" required="True">
 						<i class="zmdi zmdi-account"></i>
 					</div>
+					<span style="color: #ff0000; font-weight: bold;">{{ form.errors.username }}</span>
 					<div class="form-wrapper">
 						<input name="password" type="password" placeholder="Password" class="form-control" required="True">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<div class="form-wrapper">
-						<input name="confirm" type="password" placeholder="Confirm Password" class="form-control" required="True">
+						<input name="confirm_password" type="password" placeholder="Confirm Password" class="form-control" required="True">
 						<i class="zmdi zmdi-lock"></i>
 					</div>
-					<span style="color: #ff0000; font-weight: bold;">{{ form.errors }}</span>
+					<span style="color: #ff0000; font-weight: bold;">{{ form.errors.confirm_password }}</span>
 					<button>Register
 						<i class="zmdi zmdi-arrow-right"></i>
 					</button>

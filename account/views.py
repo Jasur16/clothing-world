@@ -17,13 +17,12 @@ def account_login(request):
         if form.is_valid():
             user = authenticate(request, **form.cleaned_data)
             if user is not None:
-
                 login(request, user)
 
                 messages.success(request, f"{user.get_full_name()} xush kelibsiz!")
                 return redirect('pages:home')
 
-        form.add_error('password', "Login va/yoki parol no'tog'ri")
+        form.add_error('password', "Логин и/или пароль неверный")
 
     return render(request, 'login.html', {
         'form': form
@@ -39,13 +38,40 @@ def account_registration(request):
             form.instance.set_password(form.cleaned_data.get('password'))
             form.save()
 
-        messages.success(request, "Siz muvaffaqiyatli ro'yxatdan o'tdingiz")
+        messages.success(request, "Вы успешно зарегистрировались")
 
         return redirect('login')
 
     return render(request, 'registration.html', {
         'form': form
     })
+
+
+# def account_registration(request):
+#     form = RegistrationForm()
+#     if request.method == 'POST':
+#         form = RegistrationForm(data=request.POST)
+#         if form.is_valid():
+#             username = form.cleaned_data['username']
+#             first_name = form.cleaned_data['first_name']
+#             last_name = form.cleaned_data['last_name']
+#             password = form.cleaned_data['password']
+#             user = User(
+#                 username=username,
+#                 first_name=first_name,
+#                 last_name=last_name,
+#                 password=password
+#             )
+#             print(user)
+#
+#             # user.save()
+#
+#         messages.success(request, "Siz muvaffaqiyatli ro'yxatdan o'tdingiz")
+#         return redirect('login')
+#
+#     return render(request, 'registration.html', {
+#         'form': form
+#     })
 
 
 def account_logout(request):

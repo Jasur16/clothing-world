@@ -10,11 +10,11 @@
             <div class="right-top-bar flex-w h-full">
                 {% if user.is_authenticated %}
                 <a class="flex-c-m trans-04 p-lr-25" href="{% url 'logout' %}">
-                    {% translate 'Logout' %}
+                    {% translate 'Выйти' %}
                 </a>
                 {% else %}
                 <a href="{% url 'my-account' %}" class="flex-c-m trans-04 p-lr-25">
-                    {% translate 'My Account' %}
+                    {% translate 'Мой Профиль' %}
                 </a>
                 {% endif %}
                 {% for lang in LANGUAGES %}
@@ -37,7 +37,7 @@
             <div class="menu-desktop">
                 <ul class="main-menu">
                     <li class="{% if request.path == '/' %}active-menu{% endif %}">
-                        <a href="{% url 'pages:home' %}">{% translate 'Home' %}</a>
+                        <a href="{% url 'pages:home' %}">{% translate 'Главная' %}</a>
                         <!--                            <ul class="sub-menu">-->
                         <!--                                <li><a href="{% url 'pages:home' %}">Men</a></li>-->
                         <!--                                <li><a href="{% url 'pages:women' %}">Women</a></li>-->
@@ -45,24 +45,24 @@
                     </li>
 
                     <li class="{% if request.path == '/shop/' %}active-menu{% endif %}">
-                        <a href="{% url 'shop:home' %}">{% translate 'Shop' %}</a>
+                        <a href="{% url 'shop:home' %}">{% translate 'Подукты' %}</a>
                     </li>
 
                     <li class="label1 {% if request.path == '/features/' %}active-menu{% endif %}"
                         data-label1="hot">
-                        <a href="shoping-cart.html">{% translate 'Features' %}</a>
+                        <a href="shoping-cart.html">{% translate 'Функции' %}</a>
                     </li>
 
                     <li class="{% if request.path == '/blogs/' %}active-menu{% endif %}">
-                        <a href="{% url 'blogs:posts' %}">{% translate 'Blog' %}</a>
+                        <a href="{% url 'blogs:posts' %}">{% translate 'Блог' %}</a>
                     </li>
 
                     <li class="{% if request.path == '/about/' %}active-menu{% endif %}">
-                        <a href="about.html">{% translate 'About' %}</a>
+                        <a href="{% url 'pages:about' %}">{% translate 'О нас' %}</a>
                     </li>
 
                     <li class="{% if request.path == '/contact/' %}active-menu{% endif %}">
-                        <a href="{% url 'pages:contact' %}">{% translate 'Contact' %}</a>
+                            <a href="{% url 'pages:contact' %}">{% translate 'Контакты' %}</a>
                     </li>
                 </ul>
             </div>
@@ -130,21 +130,18 @@
             <div class="right-top-bar flex-w h-full">
                 {% if user.is_authenticated %}
                 <a class="flex-c-m trans-04 p-lr-25" href="{% url 'logout' %}">
-                    {% translate 'Logout' %}
+                    {% translate 'Выйти' %}
                 </a>
                 {% else %}
                 <a href="{% url 'my-account' %}" class="flex-c-m trans-04 p-lr-25">
-                    {% translate 'My Account' %}
+                    {% translate 'Мой Профиль' %}
                 </a>
                 {% endif %}
-
-                <a href="#" class="flex-c-m p-lr-10 trans-04">
-                    EN
+                {% for lang in LANGUAGES %}
+                <a href="/{{ lang.0 }}/" style="" class="flex-c-m trans-04 p-lr-25">
+                    {{ lang.0 }}
                 </a>
-
-                <a href="#" class="flex-c-m p-lr-10 trans-04">
-                    RU
-                </a>
+                {% endfor %}
 
             </div>
         </li>
@@ -152,7 +149,7 @@
 
     <ul class="main-menu-m">
         <li>
-            <a class="{% if request.path == '/' %}text-dark{% endif %}" href="{% url 'pages:home' %}">{% translate 'Home' %}</a>
+            <a class="{% if request.path == '/' %}text-dark{% endif %}" href="{% url 'pages:home' %}">{% translate 'Главная' %}</a>
             <!--                <ul class="sub-menu-m">-->
             <!--                    <li><a href="{% url 'pages:home' %}">Men</a></li>-->
             <!--                    <li><a href="{% url 'pages:women' %}">Women</a></li>-->
@@ -160,26 +157,26 @@
         </li>
 
         <li>
-            <a class="{% if request.path == '/shop/' %}text-dark{% endif %}" href="{% url 'shop:home' %}">{% translate 'Shop' %}</a>
+            <a class="{% if request.path == '/shop/' %}text-dark{% endif %}" href="{% url 'shop:home' %}">{% translate 'Продукты' %}</a>
         </li>
 
         <li>
             <a href="shoping-cart.html" class="label1 rs1"
-               data-label1="hot {% if request.path == '/features/' %}text-dark{% endif %}">{% translate 'Features' %}</a>
+               data-label1="hot {% if request.path == '/features/' %}text-dark{% endif %}">{% translate 'Функции' %}</a>
         </li>
 
         <li>
             <a class="{% if request.path == '/blogs/' %}text-dark{% endif %}"
-               href="{% url 'blogs:posts' %}">{% translate 'Blog' %}</a>
+               href="{% url 'blogs:posts' %}">{% translate 'Блог' %}</a>
         </li>
 
         <li>
-            <a class="{% if request.path == '/about/' %}text-dark{% endif %}" href="about.html">{% translate 'About' %}</a>
+            <a class="{% if request.path == '/about/' %}text-dark{% endif %}" href="about.html">{% translate 'О нас' %}</a>
         </li>
 
         <li>
             <a class="{% if request.path == '/contact/' %}text-dark{% endif %}"
-               href="{% url 'pages:contact' %}">{% translate 'Contact' %}</a>
+               href="{% url 'pages:contact' %}">{% translate 'Контакты' %}</a>
         </li>
     </ul>
 </div>
@@ -236,18 +233,18 @@
 
             <div class="w-full">
                 <div class="header-cart-total w-full p-tb-40">
-                    {% translate 'Total:' %} ${{ info.1 }}
+                    {% translate 'Общая сумма:' %} ${{ info.1 }}
                 </div>
 
                 <div class="header-cart-buttons flex-w w-full">
                     <a href="shoping-cart.html"
                        class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-r-8 m-b-10">
-                        {% translate 'View Cart' %}
+                        {% translate 'Посмотреть корзину' %}
                     </a>
 
                     <a href="shoping-cart.html"
                        class="flex-c-m stext-101 cl0 size-107 bg3 bor2 hov-btn3 p-lr-15 trans-04 m-b-10">
-                        {% translate 'Check Out' }
+                        {% translate 'Проверить' %}
                     </a>
                 </div>
             </div>
