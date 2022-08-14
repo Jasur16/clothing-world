@@ -72,10 +72,10 @@ class WishlistView(LoginRequiredMixin, ListView):
     def get_queryset(self):
         return ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
 
-    # def get_context_data(self, *, object_list=None, **kwargs):
-    #     data = super().get_context_data()
-    #     data['products'] = ProductModel.objects.all()
-    #     return data
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data()
+        data['orders'] = ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
+        return data
 
 
 def update_cart_view(request, id):

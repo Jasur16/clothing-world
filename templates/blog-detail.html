@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 <h1>&nbsp</h1>
@@ -7,12 +7,12 @@
 <div class="container pt-5">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            Home
+            {% translate 'Главная' %}
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
         <a href="{% url 'blogs:posts' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            Blog
+            {% translate 'Блог' %}
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
@@ -47,7 +47,7 @@
                     <div class="p-t-32">
 							<span class="flex-w flex-m stext-111 cl2 p-b-19">
 								<span>
-									<span class="cl4">By</span> {{ object.auther.full_name }}
+									<span class="cl4">{% translate 'Создатель' %}</span> {{ object.auther.full_name }}
 									<span class="cl12 m-l-4 m-r-6">|</span>
 								</span>
 
@@ -57,7 +57,7 @@
 								</span>
 								<span>
                                     {% if object.comments.values %}
-									{{ object.comments.values.count }} Comments
+									{{ object.comments.values.count }} {% translate 'Комментарии' %}
                                     {% endif %}
 								</span>
 							</span>
@@ -72,7 +72,7 @@
 
                     <div class="flex-w flex-t p-t-16">
 							<span class="size-216 stext-116 cl8 p-t-4">
-								Tags
+								{% translate 'Теги' %}
 							</span>
                         <div class="flex-w size-217">
                             {% for tag in object.tag.values %}
@@ -87,11 +87,11 @@
                     <!-- Comments  -->
                     <div class="p-t-40">
                         <h5 class="mtext-113 cl2 p-b-12">
-                            Leave a Comment
+                            {% translate 'Оставить комментарий' %}
                         </h5>
 
                         <p class="stext-107 cl6 p-b-40">
-                            Your email address will not be published. Required fields are marked *
+                            {% translate 'Ваш электронный адрес не будет опубликован. Обязательные поля помечены *' %}
                         </p>
 
                         <div style="{% if object.comments.values %}background-color: #dfdcff; color: black;{% endif %}"
@@ -133,7 +133,7 @@
                             </div>
 
                             <button class="flex-c-m stext-101 cl0 size-125 bg3 bor2 hov-btn3 p-lr-15 trans-04">
-                                Post Comment
+                                {% translate 'Оставить комментарий' %}
                             </button>
                         </form>
                     </div>
@@ -155,7 +155,7 @@
 
                     <div class="p-t-55">
                         <h4 class="mtext-112 cl2 p-b-33">
-                            Categories
+                            {% translate 'Категории' %}
                         </h4>
                         <ul>
                             {% for cat in categories %}
@@ -170,7 +170,7 @@
 
                     <div class="p-t-65">
                         <h4 class="mtext-112 cl2 p-b-33">
-                            Featured Products
+                            {% translate 'Рекомендуемые продукты' %}
                         </h4>
 
                         <ul>
@@ -200,7 +200,8 @@
 
                     <div class="p-t-50">
                         <h4 class="mtext-112 cl2 p-b-27">
-                            Tags
+                            {% translate 'Теги' %}
+
                         </h4>
 
                         <div class="flex-w m-r--5">

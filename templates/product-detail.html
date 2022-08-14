@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-{% load static %}
+{% load static i18n %}
 
 {% block content %}
 <h4>&nbsp</h4>
@@ -7,12 +7,12 @@
 <div class="container pt-5">
     <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
         <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            Home
+            {% translate 'Главная' %}
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
         <a href="{% url 'shop:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-            Shop
+            {% translate 'Продукты' %}
             <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
         </a>
 
@@ -126,7 +126,7 @@
                     <div class="p-t-33">
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-203 flex-c-m respon6">
-                                Size
+                                {% translate 'Размер' %}
                             </div>
                             {% for size in object.sizes.all %}
                             {{ size.name }}
@@ -134,9 +134,9 @@
                             <div class="size-204 respon6-next">
                                 <div class="rs1-select2 bor8 bg0">
                                     <select class="js-select2" name="time">
-                                        <option>Choose an option</option>
+                                        <option>{% translate 'Выберите опцию' %}</option>
                                         {% for size in object.sizes.all %}
-                                        <option>Size {{ size.name }}</option>
+                                        <option>{% translate 'Размер' %} {{ size.name }}</option>
                                         {% endfor %}
                                     </select>
                                     <div class="dropDownSelect2"></div>
@@ -146,7 +146,7 @@
 
                         <div class="flex-w flex-r-m p-b-10">
                             <div class="size-203 flex-c-m respon6">
-                                Color
+                                {% translate 'Цвет' %}
                             </div>
 
                             <div class="size-204 respon6-next">
@@ -177,7 +177,7 @@
                                 </div>
                                 <a href=""
                                    class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                    Add to cart
+                                    {% translate 'Добавить в корзину' %}
                                 </a>
                             </div>
                         </div>
@@ -243,7 +243,7 @@
 			</span>
 
         <span class="stext-107 cl6 p-lr-25">
-				<span class="text-dark">Category: </span>{{ object.category }}
+				<span class="text-dark">{% translate 'Категория' %}: </span>{{ object.category }}
 			</span>
     </div>
 </section>
@@ -254,7 +254,7 @@
     <div class="container">
         <div class="p-b-45">
             <h3 class="ltext-106 cl5 txt-center">
-                Related Products
+                {% translate 'Сопутствующие товары' %}
             </h3>
         </div>
 

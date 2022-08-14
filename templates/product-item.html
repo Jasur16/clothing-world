@@ -1,13 +1,12 @@
-{% load static %}
-{% load my_tags %}
+{% load static my_tags i18n %}
 <!-- Block2 -->
 <div class="block2">
     <a href="{% url 'shop:cart' id=product.pk %}?next={{ request.path }}"
        class="text-dark hov-cl1">
         {% if product|is_cart:request %}
-        Remove from cart
+        {% translate 'Удалить из корзины' %}
         {% else %}
-        Add to cart
+        {% translate 'Добавить в корзину' %}
         {% endif %}
     </a>
     <div class="block2-pic hov-img0 {% if product.new %} label-new {% endif %}" data-label="New">
@@ -17,7 +16,7 @@
 
         <a href=""
            class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
-            Quick View
+            {% translate 'Быстрый просмотр' }
         </a>
     </div>
     <div class="block2-txt flex-w flex-t p-t-14">
