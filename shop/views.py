@@ -1,17 +1,19 @@
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
+from django.db.models import Model
+from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
-from django.views.generic import ListView, DetailView
+from django.views.generic import ListView, DetailView, View, TemplateView
 from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
     ProductDetailImageModel, WishlistModel
 
 
 class ShopView(ListView):
     template_name = 'product.html'
-    paginate_by = 12
+    paginate_by = 2
 
     def get_queryset(self):
-        qs = ProductModel.objects.all()
+        qs = ProductModel.objects.filter()
 
         search = self.request.GET.get('search')
         if search:
@@ -44,6 +46,17 @@ class ShopView(ListView):
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
         return data
+
+
+# class MainView(TemplateView):
+#     template_name = 'posts-json.html'
+#
+#
+# class PostJsonListModel(View):
+#
+#     def get(self, *args, **kwargs):
+#         posts = list(ProductModel.objects.values())
+#         return JsonResponse({'data': posts}, safe=False)
 
 
 class ProductDetailView(DetailView):

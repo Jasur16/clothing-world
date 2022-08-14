@@ -9,18 +9,18 @@
             </div>
             <div class="right-top-bar flex-w h-full">
                 {% if user.is_authenticated %}
-                <a class="flex-c-m trans-04 p-lr-25" href="{% url 'logout' %}">
-                    {% translate 'Выйти' %}
-                </a>
+                    <a class="flex-c-m trans-04 p-lr-25" href="{% url 'login' %}">
+                        {% translate 'Выйти' %}
+                    </a>
                 {% else %}
-                <a href="{% url 'my-account' %}" class="flex-c-m trans-04 p-lr-25">
-                    {% translate 'Мой Профиль' %}
-                </a>
+                    <a href="{% url 'my-account' %}" class="flex-c-m trans-04 p-lr-25">
+                        {% translate 'Мой Профиль' %}
+                    </a>
                 {% endif %}
                 {% for lang in LANGUAGES %}
-                <a href="/{{ lang.0 }}/" style="" class="flex-c-m trans-04 p-lr-25">
-                    {{ lang.0 }}
-                </a>
+                    <a href="/{{ lang.0 }}/{{ request.path|slice:"4:" }}" style="" class="flex-c-m trans-04 p-lr-25">
+                        {{ lang.0 }}
+                    </a>
                 {% endfor %}
             </div>
         </div>
@@ -32,11 +32,10 @@
             <a href="{% url 'pages:home' %}" class="logo">
                 <img src="{% static 'images/icons/logo-01.png' %}" alt="IMG-LOGO">
             </a>
-
             <!-- Menu desktop -->
             <div class="menu-desktop">
                 <ul class="main-menu">
-                    <li class="{% if request.path == '/' %}active-menu{% endif %}">
+                    <li class="{% if request.path|slice:"4:" == '' %}active-menu{% endif %}">
                         <a href="{% url 'pages:home' %}">{% translate 'Главная' %}</a>
                         <!--                            <ul class="sub-menu">-->
                         <!--                                <li><a href="{% url 'pages:home' %}">Men</a></li>-->
@@ -44,24 +43,24 @@
                         <!--                            </ul>-->
                     </li>
 
-                    <li class="{% if request.path == '/shop/' %}active-menu{% endif %}">
+                    <li class="{% if request.path|slice:"4:" == 'shop/' %}active-menu{% endif %}">
                         <a href="{% url 'shop:home' %}">{% translate 'Подукты' %}</a>
                     </li>
 
-                    <li class="label1 {% if request.path == '/features/' %}active-menu{% endif %}"
+                    <li class="label1 {% if request.path|slice:"4:" == 'shopping-cart/' %}active-menu{% endif %}"
                         data-label1="hot">
-                        <a href="shoping-cart.html">{% translate 'Функции' %}</a>
+                        <a href="{% url 'pages:cart' %}">{% translate 'Корзина покупателя' %}</a>
                     </li>
 
-                    <li class="{% if request.path == '/blogs/' %}active-menu{% endif %}">
+                    <li class="{% if request.path|slice:"4:" == 'blogs/' %}active-menu{% endif %}">
                         <a href="{% url 'blogs:posts' %}">{% translate 'Блог' %}</a>
                     </li>
 
-                    <li class="{% if request.path == '/about/' %}active-menu{% endif %}">
+                    <li class="{% if request.path|slice:"4:" == 'about/' %}active-menu{% endif %}">
                         <a href="{% url 'pages:about' %}">{% translate 'О нас' %}</a>
                     </li>
 
-                    <li class="{% if request.path == '/contact/' %}active-menu{% endif %}">
+                    <li class="{% if request.path|slice:"4:" == 'contact/' %}active-menu{% endif %}">
                         <a href="{% url 'pages:contact' %}">{% translate 'Контакты' %}</a>
                     </li>
                 </ul>
@@ -80,11 +79,11 @@
 
 
                 {% if request.user.is_authenticated %}
-                <a href="{% url 'shop:all_wishlist' %}"
-                   class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
-                   data-notify="{{ orders.count }}">
-                    <i class="zmdi zmdi-favorite-outline"></i>
-                </a>
+                    <a href="{% url 'shop:all_wishlist' %}"
+                       class="dis-block icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti"
+                       data-notify="{{ orders.count }}">
+                        <i class="zmdi zmdi-favorite-outline"></i>
+                    </a>
                 {% endif %}
             </div>
         </nav>
@@ -124,25 +123,24 @@
     </div>
 </div>
 
-
 <!-- Menu Mobile -->
 <div class="menu-mobile">
     <ul class="topbar-mobile">
         <li>
             <div class="right-top-bar flex-w h-full">
                 {% if user.is_authenticated %}
-                <a class="flex-c-m trans-04 p-lr-25" href="{% url 'logout' %}">
-                    {% translate 'Выйти' %}
-                </a>
+                    <a class="flex-c-m trans-04 p-lr-20" href="{% url 'logout' %}">
+                        {% translate 'Выйти' %}
+                    </a>
                 {% else %}
-                <a href="{% url 'my-account' %}" class="flex-c-m trans-04 p-lr-25">
-                    {% translate 'Мой Профиль' %}
-                </a>
+                    <a href="{% url 'my-account' %}" class="flex-c-m trans-04 p-lr-20">
+                        {% translate 'Мой Профиль' %}
+                    </a>
                 {% endif %}
                 {% for lang in LANGUAGES %}
-                <a href="/{{ lang.0 }}/" style="" class="flex-c-m trans-04 p-lr-25">
-                    {{ lang.0 }}
-                </a>
+                    <a href="/{{ lang.0 }}/{{ request.path|slice:"4:" }}" style="" class="flex-c-m trans-04 p-lr-20">
+                        {{ lang.0 }}
+                    </a>
                 {% endfor %}
 
             </div>
@@ -151,7 +149,8 @@
 
     <ul class="main-menu-m">
         <li>
-            <a class="{% if request.path == '/' %}text-dark{% endif %}" href="{% url 'pages:home' %}">{% translate 'Главная' %}</a>
+            <a class="{% if request.path|slice:"4:" == '' %}text-dark{% endif %}"
+               href="{% url 'pages:home' %}">{% translate 'Главная' %}</a>
             <!--                <ul class="sub-menu-m">-->
             <!--                    <li><a href="{% url 'pages:home' %}">Men</a></li>-->
             <!--                    <li><a href="{% url 'pages:women' %}">Women</a></li>-->
@@ -159,25 +158,27 @@
         </li>
 
         <li>
-            <a class="{% if request.path == '/shop/' %}text-dark{% endif %}" href="{% url 'shop:home' %}">{% translate 'Продукты' %}</a>
+            <a class="{% if request.path|slice:"4:" == 'shop/' %}text-dark{% endif %}"
+               href="{% url 'shop:home' %}">{% translate 'Продукты' %}</a>
         </li>
 
         <li>
-            <a href="shoping-cart.html" class="label1 rs1"
-               data-label1="hot {% if request.path == '/features/' %}text-dark{% endif %}">{% translate 'Функции' %}</a>
+            <a href="{% url 'pages:cart' %}" class="label1 rs1"
+               data-label1="hot {% if request.path|slice:"4:" == 'features/' %}text-dark{% endif %}">{% translate 'Корзина покупателя' %}</a>
         </li>
 
         <li>
-            <a class="{% if request.path == '/blogs/' %}text-dark{% endif %}"
+            <a class="{% if request.path|slice:"4:" == 'blogs/' %}text-dark{% endif %}"
                href="{% url 'blogs:posts' %}">{% translate 'Блог' %}</a>
         </li>
 
         <li>
-            <a class="{% if request.path == '/about/' %}text-dark{% endif %}" href="about.html">{% translate 'О нас' %}</a>
+            <a class="{% if request.path|slice:"4:" == 'about/' %}text-dark{% endif %}"
+               href="about.html">{% translate 'О нас' %}</a>
         </li>
 
         <li>
-            <a class="{% if request.path == '/contact/' %}text-dark{% endif %}"
+            <a class="{% if request.path|slice:"4:" == 'contact/' %}text-dark{% endif %}"
                href="{% url 'pages:contact' %}">{% translate 'Контакты' %}</a>
         </li>
     </ul>

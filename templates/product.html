@@ -3,54 +3,60 @@
 
 {% block content %}
 
-{% block extra_css %}
-<style>
-    a:hover{
-        cursor: pointer;
-    }
+    {% block extra_css %}
+        <style>
+            a:hover {
+                cursor: pointer;
+            }
 
-</style>
-{% endblock %}
+        </style>
+    {% endblock %}
 
-<div class="container mb-5 pb-5">
+    <div class="container mb-5 pb-5">
 
-</div>
+    </div>
 
-<!-- Product -->
-<div class="bg m-t-23 p-b-140">
-    <div class="container">
-        {% include 'product-topbar.html' %}
+    <!-- Product -->
+    <div class="bg m-t-23 p-b-140">
+        <div class="container">
+            {% include 'product-topbar.html' %}
 
-        <div class="row isotope-grid">
-            {% for product in object_list %}
-            <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
-                {% include 'product-item.html' %}
+            <div class="row isotope-grid">
+                {% for product in object_list %}
+                    <div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women">
+                        {% include 'product-item.html' %}
+                    </div>
+                {% endfor %}
             </div>
-            {% endfor %}
-        </div>
+
+            <div class="flex-c-m flex-w w-full p-t-45">
+                <a href="#" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+                    Load More
+                </a>
+            </div>
 
 
-        <!-- Pagination -->
-        <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">
-            {% for page in page_obj.paginator.page_range %}
-            <a href="?page={{ page }}"
-               class="flex-c-m how-pagination1 trans-04 m-all-7
-                           {% if page == page_obj.number %}
-                                active-pagination1
-                           {%  endif%}">
-                {{ page }}
-            </a>
-            {% endfor %}
+            <!-- Pagination -->
+            {#        <div class="flex-l-m flex-w w-full p-t-10 m-lr--7">#}
+            {#            {% for page in page_obj.paginator.page_range %}#}
+            {#            <a href="?page={{ page }}"#}
+            {#               class="flex-c-m how-pagination1 trans-04 m-all-7#}
+            {#                           {% if page == page_obj.number %}#}
+            {#                                active-pagination1#}
+            {#                           {%  endif%}">#}
+            {#                {{ page }}#}
+            {#            </a>#}
+            {#            {% endfor %}#}
+            {#        </div>#}
         </div>
     </div>
-</div>
 
 
 {% endblock %}
 
 {% block extra_js %}
 
-<script>
+    <script>
         function addUrlParameter(name, value) {
             let searchParameter = new URLSearchParams(window.location.search)
             if (searchParameter.has(name) && searchParameter.get(name) == value) { <!-- cat=2&tag=1 -->
@@ -63,7 +69,6 @@
         }
 
 
-
-</script>
+    </script>
 
 {% endblock %}

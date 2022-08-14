@@ -1,9 +1,11 @@
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, redirect
+from django.template.loader import render_to_string
 from django.views.generic import TemplateView, CreateView, ListView
 from blogs.models import PostModel
 from shop.models import BarCategoryModel, CategoryModel, ProductModel, ProductTagModel, SizeModel, ColorModel
 from .models import MenBannerModel, WomenBannerModel, AboutModel
-from .forms import ContactModelForm
+from .forms import ContactForm
+from django.core.mail import send_mail
 
 
 class HomeView(ListView):
@@ -57,9 +59,37 @@ class AboutView(ListView):
     template_name = 'about.html'
 
 
-class ContactView(CreateView):
-    template_name = 'contact.html'
-    form_class = ContactModelForm
+# class ContactView(CreateView):
+#     template_name = 'contact.html'
+#     form_class = ContactModelForm
+#
+#     def get_success_url(self):
+#         return reverse('pages:contact')
 
-    def get_success_url(self):
-        return reverse('pages:contact')
+
+def index(request):
+    if request.method == 'POST':
+        form = ContactForm(request.POST)
+
+        if form.is_valid():
+            print(form.cleaned_data['phone'])
+            name = form.cleaned_data['name']
+            email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            message = form.cleaned_data['message']
+
+            html = render_to_string('contactform.html', {'name': name, 'email': email, 'phone': phone, 'message': message})
+
+            send_mail('The contact form subject', 'This is the message', 'jasur@codewithstein.com', ['jasurisrailov1@gmail.com'], html_message=html)
+
+            return redirect('pages:contact')
+    else:
+        form = ContactForm()
+
+    return render(request, 'contact.html', context={
+        'form': form,
+    })
+
+
+class ShoppingCart(TemplateView):
+    template_name = 'shopping-cart.html'

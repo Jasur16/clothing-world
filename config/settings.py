@@ -9,6 +9,11 @@ DEBUG = config('DEBUG')
 
 ALLOWED_HOSTS = []
 
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = '350b47bd2c8e43'
+EMAIL_HOST_PASSWORD = '926d41f15db170'
+EMAIL_PORT = '2525'
+
 INSTALLED_APPS = [
     'django.contrib.admin',
     'django.contrib.auth',
@@ -25,6 +30,7 @@ INSTALLED_APPS = [
     'account',
     'orders',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -132,3 +138,6 @@ from django.contrib.messages import constants as messages
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success',
 }
+
+BOT_TOKEN = '5505094284:AAEDg2dCU6vtsHzMU_3ynVdgAxiIInuiqD8'
+BOT_ADMIN_ID = 1298156498
