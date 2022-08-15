@@ -15,6 +15,7 @@ EMAIL_HOST_PASSWORD = '926d41f15db170'
 EMAIL_PORT = '2525'
 
 INSTALLED_APPS = [
+    'modeltranslation',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -30,7 +31,6 @@ INSTALLED_APPS = [
     'account',
     'orders',
 ]
-
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -103,6 +103,8 @@ LANGUAGES = (
     ('uz', "Uzbek"),
     ('ru', "Russia")
 )
+
+MODELTRANSLATION_DEFAULT_LANGUAGE = 'uz'
 
 LOCALE_PATHS = [
     BASE_DIR / 'locales'

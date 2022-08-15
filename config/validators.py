@@ -1,6 +1,7 @@
 from django.core.exceptions import ValidationError
 from django.utils.deconstruct import deconstructible
 import re
+from django.utils.translation import gettext_lazy as _
 
 
 @deconstructible
@@ -12,4 +13,4 @@ class PhoneValidator:
         if value and len(phone) == 12:
             return
         else:
-            raise ValidationError(f"{phone} telefon raqam emas")
+            raise ValidationError(_(f"{phone} telefon raqam emas, raqamni boshini '998' bilan boshlang"))

@@ -32,8 +32,8 @@ class HomeView(ListView):
 
         return qs
 
-    def get_context_data(self, object_list=None, **kwargs):
-        data = super().get_context_data(**kwargs)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data()
         data['men_banners'] = MenBannerModel.objects.filter(is_active=True).order_by('-pk')
         data['categories'] = CategoryModel.objects.all()
         data['tags'] = ProductTagModel.objects.all()
@@ -58,6 +58,11 @@ class AboutView(ListView):
     model = AboutModel
     template_name = 'about.html'
 
+    def get_context_data(self, **kwargs):
+        data = super().get_context_data()
+        data['abouts'] = AboutModel.objects.all()
+        return data
+
 
 # class ContactView(CreateView):
 #     template_name = 'contact.html'
@@ -78,9 +83,11 @@ def index(request):
             phone = form.cleaned_data['phone']
             message = form.cleaned_data['message']
 
-            html = render_to_string('contactform.html', {'name': name, 'email': email, 'phone': phone, 'message': message})
+            html = render_to_string('contactform.html',
+                                    {'name': name, 'email': email, 'phone': phone, 'message': message})
 
-            send_mail('The contact form subject', 'This is the message', 'jasur@codewithstein.com', ['jasurisrailov1@gmail.com'], html_message=html)
+            send_mail('The contact form subject', 'This is the message', 'user@codewithstein.com',
+                      ['jasurisrailov1@gmail.com'], html_message=html)
 
             return redirect('pages:contact')
     else:

@@ -31,3 +31,4 @@ class AboutModelAdmin(admin.ModelAdmin):
     list_display = ['our_story', 'our_mission']
     list_display_links = ['our_story', 'our_mission']
     list_filter = ['created_at']
+

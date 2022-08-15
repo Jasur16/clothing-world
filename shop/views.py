@@ -10,7 +10,7 @@ from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryMod
 
 class ShopView(ListView):
     template_name = 'product.html'
-    paginate_by = 2
+    paginate_by = 12
 
     def get_queryset(self):
         qs = ProductModel.objects.filter()
@@ -68,7 +68,7 @@ class ProductDetailView(DetailView):
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)
         # data['sizes'] = SizeModel.objects.all()
         # data['colors'] = ColorModel.objects.all()
-        data['detail_images'] = ProductDetailImageModel.objects.all().exclude(id=self.object.pk)
+        data['detail_images'] = ProductDetailImageModel.objects.all().filter(id=self.object.pk)
         return data
 
 

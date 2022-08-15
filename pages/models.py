@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
-from django.core.validators import MinLengthValidator, MaxLengthValidator
+from django.core.validators import MinLengthValidator, MaxLengthValidator, EmailValidator
 from config.validators import PhoneValidator
 
 
@@ -13,7 +13,7 @@ class ContactModel(models.Model):
             MinLengthValidator(limit_value=4),
             MaxLengthValidator(limit_value=30)
         ])
-    email = models.EmailField(verbose_name=_('email'))
+    email = models.EmailField(verbose_name=_('email'), validators=[EmailValidator()])
     phone = models.CharField(max_length=13, verbose_name=_('phone'), null=True, validators=[PhoneValidator()])
     message = models.TextField(verbose_name=_('message'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))

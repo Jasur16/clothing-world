@@ -4,9 +4,9 @@
     <a href="{% url 'shop:cart' id=product.pk %}?next={{ request.path }}"
        class="text-dark hov-cl1">
         {% if product|is_cart:request %}
-        {% translate 'Удалить из корзины' %}
+            {% translate 'Удалить из корзины' %}
         {% else %}
-        {% translate 'Добавить в корзину' %}
+            {% translate 'Добавить в корзину' %}
         {% endif %}
     </a>
     <div class="block2-pic hov-img0 {% if product.new %} label-new {% endif %}" data-label="New">
@@ -24,23 +24,24 @@
             <a href="{% url 'shop:detail' pk=product.pk %}" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
                 {{ product.title }}
             </a>
-            <span class="stext-105 cl3">${{ product.real_price }} {% if product.is_discount %} <del
-                    class="text-secondary pl-2">{{ product.price }}</del> {% endif %}</span>
+            <span class="stext-105 cl3">${{ product.real_price }} {% if product.is_discount %}
+                <del
+                        class="text-secondary pl-2">{{ product.price }}</del> {% endif %}</span>
         </div>
 
         <div class="block2-txt-child2 flex-r p-t-3">
             {% if request.user.is_authenticated %}
-            {% if product|is_wishlist:request %}
-            <li class="">
-                <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img
-                        src="{% static 'images/icons/icon-heart-02.png' %}" alt=""></a>
-            </li>
-            {% else %}
-            <li>
-                <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img
-                        src="{% static 'images/icons/icon-heart-01.png' %}" alt=""></a>
-            </li>
-            {% endif %}
+                {% if product|is_wishlist:request %}
+                    <li class="">
+                        <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img
+                                src="{% static 'images/icons/icon-heart-02.png' %}" alt=""></a>
+                    </li>
+                {% else %}
+                    <li>
+                        <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img
+                                src="{% static 'images/icons/icon-heart-01.png' %}" alt=""></a>
+                    </li>
+                {% endif %}
             {% endif %}
         </div>
     </div>
