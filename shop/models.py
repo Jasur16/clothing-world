@@ -24,7 +24,7 @@ class BarCategoryModel(models.Model):
 
 class ProductDetailImageModel(models.Model):
     title = models.CharField(null=True, max_length=255, verbose_name=_('title'))
-    image_1 = models.ImageField(upload_to='detail_image', verbose_name=_('image_1'))
+    image_1 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_1'))
     image_2 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_2'))
     image_3 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_3'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))

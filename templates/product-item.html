@@ -1,14 +1,45 @@
 {% load static my_tags i18n %}
 <!-- Block2 -->
 <div class="block2">
-    <a href="{% url 'shop:cart' id=product.pk %}?next={{ request.path }}"
-       class="text-dark hov-cl1">
-        {% if product|is_cart:request %}
-            {% translate 'Удалить из корзины' %}
-        {% else %}
-            {% translate 'Добавить в корзину' %}
-        {% endif %}
-    </a>
+    {% if not user.is_authenticated %}
+        <div style="padding-top: 18%;" class="modal fade" id="exampleModalToggle" aria-hidden="true"
+             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div>
+                        <div class="text-center p-4 modal-content">
+                            <h3 class="p-2 modal-content bg-danger text-white">{% translate 'Сначала нужно войти!' %}</h3>
+                            <h4 class="p-3">{% translate 'У вас есть аккаунт?' %}</h4>
+                            <span><a class="" href="{% url 'login' %}">{% translate 'да' %}</a> или же <a
+                                    href="{% url 'registration' %}">{% translate 'нет' %}</a></span>
+                        </div>
+                        <div style="font-size: 20px" class="my_account text-center btn_a p-4">
+                            <a class="pr-2" href="{% url 'login' %}">
+                                {% translate 'Авторизоваться' %}
+                            </a>
+                            <a class="pl-2" href="{% url 'registration' %}">
+                                {% translate 'Регистрация' %}
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <a class="text-dark hov-cl1" data-bs-toggle="modal" href="#exampleModalToggle"
+           role="button">{% translate 'Добавить в корзину' %}</a>
+        </a>
+    {% else %}
+
+        <a href="{% url 'shop:cart' id=product.pk %}?next={{ request.path }}"
+           class="text-dark hov-cl1">
+            {% if product|is_cart:request %}
+                {% translate 'Удалить из корзины' %}
+            {% else %}
+                {% translate 'Добавить в корзину' %}
+            {% endif %}
+        </a>
+    {% endif %}
     <div class="block2-pic hov-img0 {% if product.new %} label-new {% endif %}" data-label="New">
         <a href="{% url 'shop:detail' pk=product.pk %}">
             <img style="height: 400px" src="{{ product.main_image.url }}" alt="IMG-PRODUCT">
