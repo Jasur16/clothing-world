@@ -2,7 +2,7 @@
 <!-- Block2 -->
 <div class="block2">
     {% if not user.is_authenticated %}
-        <div style="padding-top: 18%;" class="modal fade" id="exampleModalToggle" aria-hidden="true"
+        <div style="padding-top: 18%;" class="modal fade" id="exampleModalTogglee" aria-hidden="true"
              aria-labelledby="exampleModalToggleLabel" tabindex="-1">
 
             <div class="modal-dialog modal-dialog-centered">
@@ -11,7 +11,7 @@
                         <div class="text-center p-4 modal-content">
                             <h3 class="p-2 modal-content bg-danger text-white">{% translate 'Сначала нужно войти!' %}</h3>
                             <h4 class="p-3">{% translate 'У вас есть аккаунт?' %}</h4>
-                            <span><a class="" href="{% url 'login' %}">{% translate 'да' %}</a> или же <a
+                            <span><a class="" href="{% url 'login' %}">{% translate 'да' %}</a> {% translate 'или же' %} <a
                                     href="{% url 'registration' %}">{% translate 'нет' %}</a></span>
                         </div>
                         <div style="font-size: 20px" class="my_account text-center btn_a p-4">
@@ -26,7 +26,7 @@
                 </div>
             </div>
         </div>
-        <a class="text-dark hov-cl1" data-bs-toggle="modal" href="#exampleModalToggle"
+        <a class="text-dark hov-cl1" data-bs-toggle="modal" href="#exampleModalTogglee"
            role="button">{% translate 'Добавить в корзину' %}</a>
         </a>
     {% else %}

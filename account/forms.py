@@ -1,6 +1,7 @@
 from django import forms
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from django.utils.translation import gettext_lazy as _
 
 
 class LoginForm(forms.Form):
@@ -10,11 +11,11 @@ class LoginForm(forms.Form):
 
 class RegistrationForm(forms.ModelForm):
     confirm_password = forms.CharField(max_length=16, required=True, widget=forms.PasswordInput)
-
     # username = forms.CharField(
     #     max_length=50,
     #     min_length=4,
-    #     widget=forms.TextInput
+    #     widget=forms.TextInput,
+    #     label=_('Ism')
     # )
     # first_name = forms.CharField(
     #     max_length=50,
@@ -36,6 +37,7 @@ class RegistrationForm(forms.ModelForm):
     #     min_length=8,
     #     widget=forms.PasswordInput
     # )
+    #
 
     class Meta:
         model = User
@@ -44,5 +46,5 @@ class RegistrationForm(forms.ModelForm):
     def clean_confirm_password(self):
         data = super(RegistrationForm, self).clean()
         if data.get('password') != data.get('confirm_password'):
-            raise ValidationError('Пароли не совпадают!')
+            raise ValidationError(_('Пароли не совпадают!'))
         return data

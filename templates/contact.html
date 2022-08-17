@@ -29,7 +29,7 @@
 
                         <div class="bor8 m-b-20 how-pos4-parent">
                             <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="name"
-                                   placeholder="What's your name?">
+                                   placeholder="{% translate 'Как вас зовут?' %}">
                             <img class="how-pos4 pointer-none" style="width: 20px;"
                                  src="{% static 'images/icons/icon-user.png' %}" alt="ICON">
                         </div>
@@ -37,14 +37,14 @@
 
                         <div class="bor8 m-b-20 how-pos4-parent">
                             <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="email"
-                                   placeholder="Your Email Address">
+                                   placeholder="{% translate 'Ваша электронная почта' %}">
                             <img class="how-pos4 pointer-none" src="{% static 'images/icons/icon-email.png' %}"
                                  alt="ICON">
                         </div>
                         <span class="text-danger">{{ form.errors.email }}</span>
                         <div class="bor8 m-b-20 how-pos4-parent">
                             <input class="stext-111 cl2 plh3 size-116 p-l-62 p-r-30" type="text" name="phone"
-                                   placeholder="Your Phone Number">
+                                   placeholder="{% translate 'Ваш номер телефона' %}">
                             <img class="how-pos4 pointer-none" width="23px" src="{% static 'images/icons8-phone-50(1).png' %}"
                                  alt="ICON">
                         </div>
@@ -52,7 +52,7 @@
 
                         <div class="bor8 m-b-30">
                             <textarea class="stext-111 cl2 plh3 size-120 p-lr-28 p-tb-25" name="message"
-                                      placeholder="How Can We Help?"></textarea>
+                                      placeholder="{% translate 'Как мы можем помочь?' %}"></textarea>
                         </div>
 
                         <button class="flex-c-m stext-101 cl0 size-121 bg3 bor1 hov-btn3 p-lr-15 trans-04 pointer">

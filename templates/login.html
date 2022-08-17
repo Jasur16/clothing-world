@@ -13,12 +13,12 @@
             {% csrf_token %}
             <h3>{% translate 'Вход' %}</h3>
             <div class="form-wrapper">
-                <input name="username" type="text" placeholder="Username" class="form-control">
+                <input name="username" type="text" placeholder="{% translate 'Имя пользователя' %}" class="form-control">
                 <i class="zmdi zmdi-account"></i>
             </div>
             {{ form.errors.username }}
             <div class="form-wrapper">
-                <input name="password" type="password" placeholder="Password" class="form-control">
+                <input name="password" type="password" placeholder="{% translate 'Пароль' %}" class="form-control">
                 <i class="zmdi zmdi-lock"></i>
             </div>
             <span style="color: #ff0000; font-weight: bold;">{{ form.errors.password }}</span>

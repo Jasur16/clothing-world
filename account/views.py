@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 from django.views.generic import TemplateView
 from django.contrib.auth.models import User
 from .forms import RegistrationForm, LoginForm
-
+from django.utils.translation import gettext_lazy as _
 
 class MyAccountView(TemplateView):
     template_name = 'my_account.html'
@@ -19,10 +19,10 @@ def account_login(request):
             if user is not None:
                 login(request, user)
 
-                messages.success(request, f"{user.get_full_name()} xush kelibsiz!")
+                messages.success(request, _(f"{user.get_full_name()} xush kelibsiz!"))
                 return redirect('pages:home')
 
-        form.add_error('password', "Логин и/или пароль неверный")
+        form.add_error('password', _("Логин и/или пароль неверный"))
 
     return render(request, 'login.html', {
         'form': form
@@ -38,7 +38,7 @@ def account_registration(request):
             form.instance.set_password(form.cleaned_data.get('password'))
             form.save()
 
-        messages.success(request, "Вы успешно зарегистрировались")
+        messages.success(request, _("Вы успешно зарегистрировались"))
 
         return redirect('login')
 
@@ -75,7 +75,7 @@ def account_registration(request):
 
 
 def account_logout(request):
-    messages.success(request, f"Kelib turing {request.user.get_full_name()}!")
+    messages.success(request, _(f"Приходите {request.user.get_full_name()}!"))
     logout(request)
 
     return redirect('pages:home')
