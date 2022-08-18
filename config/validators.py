@@ -13,4 +13,4 @@ class PhoneValidator:
         if value and len(phone) == 12:
             return
         else:
-            raise ValidationError(_(f"{phone}\n начните номер телефона с '998'"))
+            raise ValidationError(f"{phone} начните номер телефона с '998'")
