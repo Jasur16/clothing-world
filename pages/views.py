@@ -41,6 +41,7 @@ class HomeView(ListView):
         data['sizes'] = SizeModel.objects.all()
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
+        data['posts'] = PostModel.objects.order_by('-pk')[:3]
         return data
 
 

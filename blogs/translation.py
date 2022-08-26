@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import PostModel
+from .models import PostModel, CommentModel
 
 
 @register(PostModel)

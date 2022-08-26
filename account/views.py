@@ -6,6 +6,7 @@ from django.contrib.auth.models import User
 from .forms import RegistrationForm, LoginForm
 from django.utils.translation import gettext_lazy as _
 
+
 class MyAccountView(TemplateView):
     template_name = 'my_account.html'
 
@@ -19,7 +20,7 @@ def account_login(request):
             if user is not None:
                 login(request, user)
 
-                messages.success(request, user.get_full_name(), _('добро пожаловать!'))
+                messages.success(request, _('добро пожаловать!'))
                 return redirect('pages:home')
 
         form.add_error('password', _("Логин и/или пароль неверный"))
@@ -75,7 +76,7 @@ def account_registration(request):
 
 
 def account_logout(request):
-    messages.success(request, _('Приходите'), request.user.get_full_name(), '!')
+    messages.success(request, _('Приходите !'), request.user.get_full_name(), '!')
     logout(request)
 
     return redirect('pages:home')

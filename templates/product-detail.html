@@ -148,9 +148,49 @@
                                         </div>
                                     </div>
 
-                                    <button class="flex-c-m stext-101 cl0 size-101 bg1 bor1 hov-btn1 p-lr-15 trans-04 js-addcart-detail">
-                                        Add to cart
-                                    </button>
+                                    {% if not user.is_authenticated %}
+                                        <div style="padding-top: 18%;" class="modal fade" id="exampleModalTogglee"
+                                             aria-hidden="true"
+                                             aria-labelledby="exampleModalToggleLabel" tabindex="-1">
+
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+                                                    <div>
+                                                        <div class="text-center p-4 modal-content">
+                                                            <h3 class="p-2 modal-content bg-danger text-white">{% translate 'Сначала нужно войти!' %}</h3>
+                                                            <h4 class="p-3">{% translate 'У вас есть аккаунт?' %}</h4>
+                                                            <span><a class=""
+                                                                     href="{% url 'login' %}">{% translate 'да' %}</a> {% translate 'или же' %} <a
+                                                                    href="{% url 'registration' %}">{% translate 'нет' %}</a></span>
+                                                        </div>
+                                                        <div style="font-size: 20px"
+                                                             class="my_account text-center btn_a p-4">
+                                                            <a class="pr-2" href="{% url 'login' %}">
+                                                                {% translate 'Авторизоваться' %}
+                                                            </a>
+                                                            <a class="pl-2" href="{% url 'registration' %}">
+                                                                {% translate 'Регистрация' %}
+                                                            </a>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            <a class="text-white hov-cl1 btn btn-primary" data-bs-toggle="modal"
+                                               href="#exampleModalTogglee"
+                                               role="button">{% translate 'Добавить в корзину' %}</a>
+                                            </a>
+                                    {% else %}
+
+                                        <a href="{% url 'shop:cart' id=object.pk %}?next={{ request.path }}"
+                                           class="text-white hov-cl1 btn btn-primary">
+                                            {% if object|is_cart:request %}
+                                                {% translate 'Удалить из корзины' %}
+                                            {% else %}
+                                                {% translate 'Добавить в корзину' %}
+                                            {% endif %}
+                                        </a>
+                                    {% endif %}
                                 </div>
                             </div>
                         </div>
@@ -166,7 +206,8 @@
                                         </li>
                                     {% else %}
                                         <li>
-                                            <a href="{% url 'shop:wishlist' pk=object.pk %}?next={{ request.path }}"><img src="{% static 'images/icons/icon-heart-01.png' %}" alt=""></a>
+                                            <a href="{% url 'shop:wishlist' pk=object.pk %}?next={{ request.path }}"><img
+                                                    src="{% static 'images/icons/icon-heart-01.png' %}" alt=""></a>
                                         </li>
                                     {% endif %}
                                 {% endif %}
