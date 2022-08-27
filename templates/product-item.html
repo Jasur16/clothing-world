@@ -32,13 +32,14 @@
     {% else %}
 
         <a href="{% url 'shop:cart' id=product.pk %}?next={{ request.path }}"
-           class="text-dark hov-cl1">
+           class="text-danger hov-cl1">
             {% if product|is_cart:request %}
-                {% translate 'Удалить из корзины' %}
+                {% translate 'Удалить из корзины' %}</a>
             {% else %}
-                {% translate 'Добавить в корзину' %}
+                <a href="{% url 'shop:cart' id=product.pk %}?next={{ request.path }}"
+                   class="text-primary hov-cl1">
+                {% translate 'Добавить в корзину' %}</a>
             {% endif %}
-        </a>
     {% endif %}
     <div class="block2-pic hov-img0 {% if product.new %} label-new {% endif %}" data-label="New">
         <a href="{% url 'shop:detail' pk=product.pk %}">

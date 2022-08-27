@@ -24,6 +24,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'ckeditor',
+    'cart',
 
     'pages',
     'blogs',
@@ -31,6 +32,8 @@ INSTALLED_APPS = [
     'account',
     'orders',
 ]
+
+CART_SESSION_ID = 'cart'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -57,6 +60,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
+                'cart.context_processor.cart_total_amount',
             ],
         },
     },

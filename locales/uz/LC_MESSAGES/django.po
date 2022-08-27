@@ -382,7 +382,7 @@ msgstr "Oyoq kiyimlari"
 
 #: templates/layouts/footer.html:32
 msgid "Часы"
-msgstr ""
+msgstr "Soatlar"
 
 #: templates/layouts/footer.html:40
 msgid "СВЯЗАТЬСЯ"
@@ -460,7 +460,7 @@ msgstr "Ro‘yxatdan o‘tish"
 
 #: templates/layouts/navbar.html:191 templates/product-detail.html:16
 msgid "Продукты"
-msgstr ""
+msgstr "Mahsulotlar"
 
 #: templates/layouts/navbar.html:273
 msgid "Общая сумма:"

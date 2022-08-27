@@ -176,20 +176,20 @@
                                                 </div>
                                             </div>
                                         </div>
-                                            <a class="text-white hov-cl1 btn btn-primary" data-bs-toggle="modal"
-                                               href="#exampleModalTogglee"
-                                               role="button">{% translate 'Добавить в корзину' %}</a>
-                                            </a>
-                                    {% else %}
-
-                                        <a href="{% url 'shop:cart' id=object.pk %}?next={{ request.path }}"
-                                           class="text-white hov-cl1 btn btn-primary">
-                                            {% if object|is_cart:request %}
-                                                {% translate 'Удалить из корзины' %}
-                                            {% else %}
-                                                {% translate 'Добавить в корзину' %}
-                                            {% endif %}
+                                        <a class="text-white hov-cl1 btn btn-primary" data-bs-toggle="modal"
+                                           href="#exampleModalTogglee"
+                                           role="button">{% translate 'Добавить в корзину' %}</a>
                                         </a>
+                                    {% else %}
+                                        {% if object|is_cart:request %}
+                                            <a href="{% url 'shop:cart' id=object.pk %}?next={{ request.path }}"
+                                               class="text-white hov-cl1 btn btn-danger ">
+                                                {% translate 'Удалить из корзины' %}</a>
+                                        {% else %}
+                                            <a href="{% url 'shop:cart' id=object.pk %}?next={{ request.path }}"
+                                               class="text-white hov-cl1 btn btn-primary">
+                                                {% translate 'Добавить в корзину' %}</a>
+                                        {% endif %}
                                     {% endif %}
                                 </div>
                             </div>

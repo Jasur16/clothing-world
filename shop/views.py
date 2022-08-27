@@ -45,7 +45,7 @@ class ShopView(ListView):
         data['sizes'] = SizeModel.objects.all()
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
-        data['model_image'] = ProductDetailImageModel.objects.all().filter()
+        data['model_image'] = ProductDetailImageModel.objects.all()
         return data
 
 
