@@ -3,7 +3,7 @@ from django.template.loader import render_to_string
 from django.views.generic import TemplateView, CreateView, ListView
 from blogs.models import PostModel
 from shop.models import BarCategoryModel, CategoryModel, ProductModel, ProductTagModel, SizeModel, ColorModel
-from .models import MenBannerModel, WomenBannerModel, AboutModel
+from .models import MenBannerModel, WomenBannerModel, AboutModel, ContactModel
 from .forms import ContactForm
 from django.core.mail import send_mail
 
@@ -59,18 +59,40 @@ class AboutView(ListView):
     model = AboutModel
     template_name = 'about.html'
 
+    def get_queryset(self):
+        qs = AboutModel.objects.filter()
+
+        search = self.request.GET.get('search')
+        if search:
+            qs = qs.filter(title__icontains=search)
+
+        cat = self.request.GET.get('cat')
+        if cat:
+            qs = qs.filter(category_id=cat)
+
+        tag = self.request.GET.get('tag')
+        if tag:
+            qs = qs.filter(tags=tag)
+
+        bar = self.request.GET.get('bar')
+        if bar:
+            qs = qs.filter(bar_category_id=bar)
+
+        color = self.request.GET.get('color')
+        if color:
+            qs = qs.filter(colors=color)
+
+        return qs
+
     def get_context_data(self, **kwargs):
         data = super().get_context_data()
         data['abouts'] = AboutModel.objects.all()
+        data['bar_categories'] = BarCategoryModel.objects.all()
         return data
 
 
-# class ContactView(CreateView):
-#     template_name = 'contact.html'
-#     form_class = ContactModelForm
-#
-#     def get_success_url(self):
-#         return reverse('pages:contact')
+class ContactView(CreateView):
+    template_name = 'contact.html'
 
 
 def index(request):

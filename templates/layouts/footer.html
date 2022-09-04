@@ -9,29 +9,13 @@
                 </h4>
 
                 <ul>
+                    {% for bar in bar_categories %}
                     <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {% translate 'Женщины' %}
+                        <a onclick="addUrlParameter('bar', {{ bar.pk }})" class="stext-107 cl7 hov-cl1 trans-04 {% if request.GET.bar == bar.pk|stringformat:'i' %} text-white {% endif %}">
+                            {{ bar.name }}
                         </a>
                     </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {% translate 'Мужчины' %}
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {% translate 'Обувь' %}
-                        </a>
-                    </li>
-
-                    <li class="p-b-10">
-                        <a href="#" class="stext-107 cl7 hov-cl1 trans-04">
-                            {% translate 'Часы' %}
-                        </a>
-                    </li>
+                    {% endfor %}
                 </ul>
             </div>
 

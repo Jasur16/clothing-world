@@ -34,6 +34,7 @@ class CommentModelAdmin(admin.ModelAdmin):
     list_display = ['name', 'email', 'phone', 'post']
     list_display_links = ['name', 'email', 'phone']
     search_fields = ['name']
+    readonly_fields = ['comment', 'name', 'email', 'phone']
 
 
 @admin.register(AutherModel)

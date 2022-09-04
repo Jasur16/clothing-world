@@ -7,7 +7,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['*']
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = '350b47bd2c8e43'
@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'ckeditor',
-    'cart',
 
     'pages',
     'blogs',
@@ -33,7 +32,6 @@ INSTALLED_APPS = [
     'orders',
 ]
 
-CART_SESSION_ID = 'cart'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -60,7 +58,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.i18n',
-                'cart.context_processor.cart_total_amount',
             ],
         },
     },

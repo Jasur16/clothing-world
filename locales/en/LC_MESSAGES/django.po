@@ -7,15 +7,15 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2022-08-27 15:57+0500\n"
-"PO-Revision-Date: 2022-08-27 16:16+0500\n"
+"POT-Creation-Date: 2022-09-04 21:03+0500\n"
+"PO-Revision-Date: 2022-09-04 21:06+0500\n"
+"Last-Translator: \n"
+"Language-Team: \n"
 "Language: en\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
-"Last-Translator: \n"
-"Language-Team: \n"
 "X-Generator: Poedit 2.3\n"
 
 #: account/forms.py:49
@@ -38,80 +38,80 @@ msgstr "You have successfully registered"
 msgid "Приходите !"
 msgstr "Come !"
 
-#: blogs/models.py:7
+#: blogs/models.py:8
 msgid "full name"
 msgstr "full name"
 
-#: blogs/models.py:13
+#: blogs/models.py:14
 msgid "auther"
 msgstr "auther"
 
-#: blogs/models.py:14
+#: blogs/models.py:15
 msgid "authers"
 msgstr "authers"
 
-#: blogs/models.py:18 blogs/models.py:25 blogs/models.py:35
+#: blogs/models.py:19 blogs/models.py:26 blogs/models.py:36
 msgid "tag"
 msgstr "tag"
 
-#: blogs/models.py:19 blogs/models.py:36 blogs/models.py:52 pages/models.py:19
+#: blogs/models.py:20 blogs/models.py:37 blogs/models.py:53 pages/models.py:19
 #: pages/models.py:34 pages/models.py:49 shop/models.py:15 shop/models.py:30
 #: shop/models.py:42 shop/models.py:54 shop/models.py:66 shop/models.py:79
 #: shop/models.py:97
 msgid "created at"
 msgstr "created at"
 
-#: blogs/models.py:26 shop/models.py:115
+#: blogs/models.py:27 shop/models.py:115
 msgid "tags"
 msgstr "tags"
 
-#: blogs/models.py:30 pages/models.py:31 pages/models.py:46 shop/models.py:13
+#: blogs/models.py:31 pages/models.py:31 pages/models.py:46 shop/models.py:13
 #: shop/models.py:26 shop/models.py:90
 msgid "title"
 msgstr "title"
 
-#: blogs/models.py:31
+#: blogs/models.py:32
 msgid "body"
 msgstr "body"
 
-#: blogs/models.py:32 shop/models.py:14
+#: blogs/models.py:33 shop/models.py:14
 msgid "image"
 msgstr "image"
 
-#: blogs/models.py:33 shop/models.py:28
+#: blogs/models.py:34 shop/models.py:28
 msgid "image_2"
 msgstr "image_2"
 
-#: blogs/models.py:42
+#: blogs/models.py:43
 msgid "blog"
 msgstr "blog"
 
-#: blogs/models.py:43
+#: blogs/models.py:44
 msgid "blogs"
 msgstr "blogs"
 
-#: blogs/models.py:47 blogs/models.py:58
+#: blogs/models.py:48 blogs/models.py:59
 msgid "comment"
 msgstr "comment"
 
-#: blogs/models.py:48 pages/models.py:11 shop/models.py:12 shop/models.py:41
+#: blogs/models.py:49 pages/models.py:11 shop/models.py:12 shop/models.py:41
 #: shop/models.py:53 shop/models.py:65 shop/models.py:77
 msgid "name"
 msgstr "name"
 
-#: blogs/models.py:49 pages/models.py:16
+#: blogs/models.py:50 pages/models.py:16
 msgid "email"
 msgstr "email"
 
-#: blogs/models.py:50 pages/models.py:17
+#: blogs/models.py:51 pages/models.py:17
 msgid "phone"
 msgstr "phone"
 
-#: blogs/models.py:51
+#: blogs/models.py:52
 msgid "post"
 msgstr "post"
 
-#: blogs/models.py:59
+#: blogs/models.py:60
 msgid "comments"
 msgstr "comments"
 
@@ -215,72 +215,69 @@ msgstr "user"
 msgid "product"
 msgstr "product"
 
-#: templates/blog-detail.html:10 templates/layouts/navbar.html:39
-#: templates/layouts/navbar.html:182 templates/product-detail.html:11
-#: templates/shopping-cart.html:10
+#: templates/blog-detail.html:10 templates/layouts/base.html:7
+#: templates/layouts/navbar.html:39 templates/layouts/navbar.html:214
+#: templates/product-detail.html:11 templates/shopping-cart.html:10
 msgid "Главная"
 msgstr "Home"
 
 #: templates/blog-detail.html:15 templates/blog.html:8
-#: templates/layouts/navbar.html:56 templates/layouts/navbar.html:201
+#: templates/layouts/base.html:19 templates/layouts/navbar.html:56
+#: templates/layouts/navbar.html:233
 msgid "Блог"
 msgstr "Blog"
 
-#: templates/blog-detail.html:50 templates/blog.html:48
+#: templates/blog-detail.html:49 templates/blog.html:48
 msgid "Создатель"
 msgstr "Creator"
 
-#: templates/blog-detail.html:60 templates/blog.html:52
+#: templates/blog-detail.html:59 templates/blog.html:52
 msgid "Комментарии"
 msgstr "Comments"
 
-#: templates/blog-detail.html:80
+#: templates/blog-detail.html:79
 msgid "Комментарии:"
 msgstr "Comments:"
 
-#: templates/blog-detail.html:103 templates/blog-detail.html:134
+#: templates/blog-detail.html:102 templates/blog-detail.html:133
 msgid "Оставить комментарий"
 msgstr "Leave a comment"
 
-#: templates/blog-detail.html:107
-msgid ""
-"Ваш электронный адрес и номер телефона не будет опубликован. Обязательные "
-"поля помечены *"
-msgstr ""
-"Your email address and phone number will not be published. Required fields "
-"are marked *"
+#: templates/blog-detail.html:106
+msgid "Ваш электронный адрес и номер телефона не будет опубликован."
+msgstr "Your email address and phone number will not be published."
 
-#: templates/blog-detail.html:115
+#: templates/blog-detail.html:114
 msgid "Комментарий..."
 msgstr "Comment..."
 
-#: templates/blog-detail.html:120 templates/registration.html:17
+#: templates/blog-detail.html:119 templates/registration.html:17
 msgid "Имя"
 msgstr "Name"
 
-#: templates/blog-detail.html:125
+#: templates/blog-detail.html:124
 msgid "Эл. адрес"
 msgstr "Email"
 
-#: templates/blog-detail.html:130
+#: templates/blog-detail.html:129
 msgid "Телефон"
 msgstr "Phone number"
 
-#: templates/blog-detail.html:146 templates/product-topbar.html:27
+#: templates/blog-detail.html:145 templates/product-topbar.html:27
 #: templates/product-topbar.html:133
 msgid "Поиск"
 msgstr "Search"
 
-#: templates/blog-detail.html:156 templates/layouts/footer.html:8
+#: templates/blog-detail.html:155 templates/layouts/footer.html:8
 #: templates/product-topbar.html:36
 msgid "Категории"
 msgstr "Categories"
 
-#: templates/blog-detail.html:171
+#: templates/blog-detail.html:170
 msgid "Рекомендуемые продукты"
 msgstr "Featured Products"
 
-#: templates/blog-detail.html:201 templates/product-topbar.html:105
+#: templates/blog-detail.html:200 templates/product-topbar.html:105
 msgid "Теги"
 msgstr "Tags"
 
@@ -288,8 +285,8 @@ msgstr "Tags"
 msgid "Продолжить чтение"
 msgstr "Read more"
 
-#: templates/contact.html:11 templates/layouts/navbar.html:64
-#: templates/layouts/navbar.html:211
+#: templates/contact.html:11 templates/layouts/base.html:27
+#: templates/layouts/navbar.html:64 templates/layouts/navbar.html:243
 msgid "Контакты"
 msgstr "Contact"
 
@@ -333,145 +330,142 @@ msgstr "connect with us"
 msgid "Поддержка продаж"
 msgstr "Sales Support"
 
-#: templates/index.html:39
+#: templates/index.html:38
 msgid "Купить сейчас"
 msgstr "Buy now"
 
-#: templates/index.html:93
+#: templates/index.html:92
 msgid "Обзор магазина"
 msgstr "Shop Overview"
 
-#: templates/index.html:132 templates/product-item.html:51
+#: templates/index.html:130 templates/product-item.html:51
 msgid "Быстрый просмотр"
 msgstr "Quick View"
 
-#: templates/layouts/base.html:165
+#: templates/layouts/base.html:11 templates/layouts/navbar.html:47
+msgid "Подукты"
+msgstr "Products"
+
+#: templates/layouts/base.html:15 templates/layouts/navbar.html:52
+#: templates/layouts/navbar.html:228 templates/shopping-cart.html:15
+msgid "Корзина покупателя"
+msgstr "Shopping cart"
+
+#: templates/layouts/base.html:23 templates/layouts/navbar.html:60
+#: templates/layouts/navbar.html:238
+msgid "О нас"
+msgstr "About Us"
+
+#: templates/layouts/base.html:31
+msgid "Информация о продукте"
+msgstr "Product Detail"
+
+#: templates/layouts/base.html:35
+msgid "Информация о блоге"
+msgstr "Blog Detail"
+
+#: templates/layouts/base.html:175
 msgid "Размеры"
 msgstr "Sizes"
 
-#: templates/layouts/base.html:171 templates/layouts/base.html:189
+#: templates/layouts/base.html:181 templates/layouts/base.html:199
 #: templates/product-detail.html:109
 msgid "Выберите опцию"
 msgstr "Choose an option"
 
-#: templates/layouts/base.html:173 templates/product-detail.html:111
+#: templates/layouts/base.html:183 templates/product-detail.html:111
 msgid "Размер"
 msgstr "Size"
 
-#: templates/layouts/base.html:183
+#: templates/layouts/base.html:193
 msgid "Цвета"
 msgstr "Colors"
 
-#: templates/layouts/base.html:215 templates/product-detail.html:181
+#: templates/layouts/base.html:225 templates/product-detail.html:181
 #: templates/product-detail.html:191 templates/product-item.html:30
 #: templates/product-item.html:41
 msgid "Добавить в корзину"
 msgstr "Add to cart"
 
-#: templates/layouts/footer.html:14
-msgid "Женщины"
-msgstr "Women"
-
-#: templates/layouts/footer.html:20
-msgid "Мужчины"
-msgstr "Men"
-
-#: templates/layouts/footer.html:26
-msgid "Обувь"
-msgstr "Shoes"
-
-#: templates/layouts/footer.html:32
-msgid "Часы"
-msgstr "Watch"
-
-#: templates/layouts/footer.html:40
+#: templates/layouts/footer.html:24
 msgid "СВЯЗАТЬСЯ"
 msgstr "CONTACT"
 
-#: templates/layouts/footer.html:44
+#: templates/layouts/footer.html:28
 msgid ""
 "Любые вопросы? Сообщите нам об этом в магазине на 8-м этаже, 379 Hudson St, "
 "New York, NY 10018 или позвоните нам по телефону\n"
 "                     (+1) 96 716 6879"
 msgstr ""
-"Any questions? Let us know at the store on the 8th floor, 379 Hudson St, "
-"New York, NY 10018 or call us\n"
+"Any questions? Let us know at the store on the 8th floor, 379 Hudson St, New "
+"York, NY 10018 or call us\n"
 "                      (+1) 96 716 6879"
 
-#: templates/layouts/footer.html:65
+#: templates/layouts/footer.html:49
 msgid "Новостная рассылка"
 msgstr "Newsletter"
 
-#: templates/layouts/footer.html:77
+#: templates/layouts/footer.html:61
 msgid "Подписываться"
 msgstr "Subscribe"
 
-#: templates/layouts/navbar.html:13 templates/layouts/navbar.html:162
+#: templates/layouts/navbar.html:13 templates/layouts/navbar.html:194
 #: templates/my_account.html:12
 msgid "Выйти"
 msgstr "Logout"
 
-#: templates/layouts/navbar.html:17 templates/layouts/navbar.html:166
+#: templates/layouts/navbar.html:17 templates/layouts/navbar.html:198
 msgid "Мой Профиль"
 msgstr "My account"
 
-#: templates/layouts/navbar.html:47
-msgid "Подукты"
-msgstr "Products"
-
-#: templates/layouts/navbar.html:52 templates/layouts/navbar.html:196
-#: templates/shopping-cart.html:15
-msgid "Корзина покупателя"
-msgstr "Shopping cart"
-
-#: templates/layouts/navbar.html:60 templates/layouts/navbar.html:206
-msgid "О нас"
-msgstr "About Us"
-
-#: templates/layouts/navbar.html:89 templates/product-detail.html:160
-#: templates/product-item.html:12
+#: templates/layouts/navbar.html:82 templates/layouts/navbar.html:121
+#: templates/product-detail.html:160 templates/product-item.html:12
 msgid "Сначала нужно войти!"
 msgstr "You need to login first!"
 
-#: templates/layouts/navbar.html:90 templates/my_account.html:16
-#: templates/product-detail.html:161 templates/product-item.html:13
+#: templates/layouts/navbar.html:83 templates/layouts/navbar.html:122
+#: templates/my_account.html:16 templates/product-detail.html:161
+#: templates/product-item.html:13
 msgid "У вас есть аккаунт?"
 msgstr "Do you have an account?"
 
-#: templates/layouts/navbar.html:91 templates/my_account.html:17
-#: templates/product-detail.html:163 templates/product-item.html:14
+#: templates/layouts/navbar.html:84 templates/layouts/navbar.html:123
+#: templates/my_account.html:17 templates/product-detail.html:163
+#: templates/product-item.html:14
 msgid "да"
 msgstr "yes"
 
-#: templates/layouts/navbar.html:92 templates/my_account.html:17
-#: templates/product-detail.html:164 templates/product-item.html:15
+#: templates/layouts/navbar.html:85 templates/layouts/navbar.html:124
+#: templates/my_account.html:17 templates/product-detail.html:164
+#: templates/product-item.html:15
 msgid "нет"
 msgstr "no"
 
-#: templates/layouts/navbar.html:96 templates/login.html:26
-#: templates/my_account.html:21 templates/product-detail.html:169
-#: templates/product-item.html:19
+#: templates/layouts/navbar.html:89 templates/layouts/navbar.html:128
+#: templates/login.html:26 templates/my_account.html:21
+#: templates/product-detail.html:169 templates/product-item.html:19
 msgid "Авторизоваться"
 msgstr "Login"
 
-#: templates/layouts/navbar.html:99 templates/my_account.html:24
-#: templates/product-detail.html:172 templates/product-item.html:22
+#: templates/layouts/navbar.html:92 templates/layouts/navbar.html:131
+#: templates/my_account.html:24 templates/product-detail.html:172
+#: templates/product-item.html:22
 msgid "Регистрация"
 msgstr "Registration"
 
-#: templates/layouts/navbar.html:191 templates/product-detail.html:16
+#: templates/layouts/navbar.html:223 templates/product-detail.html:16
 msgid "Продукты"
 msgstr "Products"
 
-#: templates/layouts/navbar.html:273
+#: templates/layouts/navbar.html:305
 msgid "Общая сумма:"
 msgstr "Total amount:"
 
-#: templates/layouts/navbar.html:279
+#: templates/layouts/navbar.html:311
 msgid "Посмотреть корзину"
 msgstr "View shopping cart"
 
-#: templates/layouts/navbar.html:284
+#: templates/layouts/navbar.html:316
 msgid "Проверить"
 msgstr "Verify"
 
@@ -551,3 +545,15 @@ msgstr "Quantity"
 #: templates/shopping-cart.html:33
 msgid "Итого"
 msgstr "Total"
+
+#~ msgid "Женщины"
+#~ msgstr "Women"
+
+#~ msgid "Мужчины"
+#~ msgstr "Men"
+
+#~ msgid "Обувь"
+#~ msgstr "Shoes"
+
+#~ msgid "Часы"
+#~ msgstr "Watch"

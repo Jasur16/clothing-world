@@ -46,6 +46,7 @@ class ShopView(ListView):
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
         data['model_image'] = ProductDetailImageModel.objects.all()
+        data['product_modal'] = ProductModel.objects.all()
         return data
 
 
@@ -94,11 +95,12 @@ class WishlistView(LoginRequiredMixin, ListView):
 
 def update_cart_view(request, id):
     cart = request.session.get('cart', [])
+    print(request.session.get('cart', []))
 
     if id in cart:
         cart.remove(id)
     else:
         cart.append(id)
 
-    request.session['cart'] = cart  # {'cart': [1]}
+    request.session['cart'] = cart
     return redirect(request.GET.get('next', '/'))

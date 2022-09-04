@@ -10,7 +10,6 @@
             }
         </style>
     {% endblock %}
-    <h1>&nbsp</h1>
     <!-- Banner -->
     <section class="section-slide">
         <div class="wrap-slick1">
@@ -110,64 +109,64 @@
                     </li>
                 </ul>
                 <!-- Tab panes -->
-{#                <div class="tab-content p-t-50">#}
-{#                    <!-- - -->#}
-{#                    <div class="tab-pane fade show active" id="best-seller" role="tabpanel">#}
-{#                        <!-- Slide2 -->#}
-{#                        <div class="wrap-slick2">#}
-{#                            <div class="slick2">#}
-{#                                {% for product in products %}#}
-{#                                    <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">#}
-{#                                        <!-- Block2 -->#}
-{#                                        <div class="block2">#}
-{#                                            <div class="block2-pic hov-img0">#}
-{#                                                <a href="{% url 'shop:detail' pk=product.pk %}">#}
-{#                                                    <img style="height: 400px" src="{{ product.main_image.url }}"#}
-{#                                                         alt="IMG-PRODUCT">#}
-{#                                                </a>#}
-{##}
-{#                                                <a href=""#}
-{#                                                   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1 text-center">#}
-{#                                                    {% translate 'Быстрый просмотр' %}#}
-{#                                                </a>#}
-{#                                            </div>#}
-{##}
-{#                                            <div class="block2-txt flex-w flex-t p-t-14">#}
-{#                                                <div class="block2-txt-child1 flex-col-l ">#}
-{#                                                    <a href="{% url 'shop:detail' pk=product.pk %}"#}
-{#                                                       class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">#}
-{#                                                        {{ product.title }}#}
-{#                                                    </a>#}
-{#                                                    <span class="stext-105 cl3">${{ product.real_price }}#}
-{#                                                        {% if product.is_discount %}#}
-{#                                                            <del#}
-{#                                                                    class="text-secondary pl-2">{{ product.price }}</del> {% endif %}</span>#}
-{#                                                </div>#}
-{#                                                {% if user.is_authenticated %}#}
-{#                                                    <div class="block2-txt-child2 flex-r p-t-3">#}
-{#                                                        {% if product|is_wishlist:request %}#}
-{#                                                            <li class="">#}
-{#                                                                <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img#}
-{#                                                                        src="{% static 'images/icons/icon-heart-02.png' %}"#}
-{#                                                                        alt=""></a>#}
-{#                                                            </li>#}
-{#                                                        {% else %}#}
-{#                                                            <li>#}
-{#                                                                <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img#}
-{#                                                                        src="{% static 'images/icons/icon-heart-01.png' %}"#}
-{#                                                                        alt=""></a>#}
-{#                                                            </li>#}
-{#                                                        {% endif %}#}
-{#                                                    </div>#}
-{#                                                {% endif %}#}
-{#                                            </div>#}
-{#                                        </div>#}
-{#                                    </div>#}
-{#                                {% endfor %}#}
-{#                            </div>#}
-{#                        </div>#}
-{#                    </div>#}
-{##}
+                <div class="tab-content p-t-50">
+                    <!-- - -->
+                    <div class="tab-pane fade show active" id="best-seller" role="tabpanel">
+                        <!-- Slide2 -->
+                        <div class="wrap-slick2">
+                            <div class="slick2">
+                                {% for product in products %}
+                                    <div class="item-slick2 p-l-15 p-r-15 p-t-15 p-b-15">
+                                        <!-- Block2 -->
+                                        <div class="block2">
+                                            <div class="block2-pic hov-img0">
+                                                <a href="{% url 'shop:detail' pk=product.pk %}">
+                                                    <img style="height: 400px" src="{{ product.main_image.url }}"
+                                                         alt="IMG-PRODUCT">
+                                                </a>
+
+                                                <a href=""
+                                                   class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1 text-center">
+                                                    {% translate 'Быстрый просмотр' %}
+                                                </a>
+                                            </div>
+
+                                            <div class="block2-txt flex-w flex-t p-t-14">
+                                                <div class="block2-txt-child1 flex-col-l ">
+                                                    <a href="{% url 'shop:detail' pk=product.pk %}"
+                                                       class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+                                                        {{ product.title }}
+                                                    </a>
+                                                    <span class="stext-105 cl3">${{ product.real_price }}
+                                                        {% if product.is_discount %}
+                                                            <del
+                                                                    class="text-secondary pl-2">{{ product.price }}</del> {% endif %}</span>
+                                                </div>
+                                                {% if user.is_authenticated %}
+                                                    <div class="block2-txt-child2 flex-r p-t-3">
+                                                        {% if product|is_wishlist:request %}
+                                                            <li class="">
+                                                                <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img
+                                                                        src="{% static 'images/icons/icon-heart-02.png' %}"
+                                                                        alt=""></a>
+                                                            </li>
+                                                        {% else %}
+                                                            <li>
+                                                                <a href="{% url 'shop:wishlist' pk=product.pk %}?next={{ request.path }}"><img
+                                                                        src="{% static 'images/icons/icon-heart-01.png' %}"
+                                                                        alt=""></a>
+                                                            </li>
+                                                        {% endif %}
+                                                    </div>
+                                                {% endif %}
+                                            </div>
+                                        </div>
+                                    </div>
+                                {% endfor %}
+                            </div>
+                        </div>
+                    </div>
+
 {#                    <!-- - -->#}
 {#                    <div class="tab-pane fade" id="featured" role="tabpanel">#}
 {#                        <!-- Slide2 -->#}
@@ -1091,7 +1090,7 @@
 {#                            </div>#}
 {#                        </div>#}
 {#                    </div>#}
-{#                </div>#}
+                </div>
             </div>
         </div>
     </section>
