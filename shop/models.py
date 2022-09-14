@@ -143,6 +143,13 @@ class ProductModel(models.Model):
             return 0, 0.0
         return len(cart), ProductModel.objects.filter(id__in=cart).aggregate(Sum('real_price'))['real_price__sum']
 
+    @staticmethod
+    def get_cart_objects(request):
+        cart = request.session.get('cart', [])
+        if not cart:
+            return None
+        return ProductModel.objects.filter(id__in=cart)
+
     def is_discount(self):
         return bool(self.discount)
 

@@ -1,5 +1,6 @@
 from pathlib import Path
 from decouple import config
+from django.contrib.messages import constants as messages
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -7,7 +8,7 @@ SECRET_KEY = config('SECRET_KEY')
 
 DEBUG = config('DEBUG')
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = []
 
 EMAIL_HOST = 'smtp.mailtrap.io'
 EMAIL_HOST_USER = '350b47bd2c8e43'
@@ -24,14 +25,18 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
 
     'ckeditor',
+    'debug_toolbar',
+    'crispy_forms',
 
     'pages',
     'blogs',
     'shop',
     'account',
     'orders',
+    'user',
 ]
 
+CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -42,6 +47,7 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'django.middleware.locale.LocaleMiddleware',
+    'debug_toolbar.middleware.DebugToolbarMiddleware',
 ]
 
 ROOT_URLCONF = 'config.urls'
@@ -136,7 +142,6 @@ CKEDITOR_CONFIGS = {
 # except ImportError:
 #     pass
 
-from django.contrib.messages import constants as messages
 
 MESSAGE_TAGS = {
     messages.SUCCESS: 'alert alert-success',
@@ -144,3 +149,14 @@ MESSAGE_TAGS = {
 
 BOT_TOKEN = '5505094284:AAEDg2dCU6vtsHzMU_3ynVdgAxiIInuiqD8'
 BOT_ADMIN_ID = 1298156498
+
+EMAIL_HOST = 'smtp.mailtrap.io'
+EMAIL_HOST_USER = 'cb9d7eea470f90'
+EMAIL_HOST_PASSWORD = '805f0444cf41d6'
+EMAIL_PORT = '2525'
+
+INTERNAL_IPS = [
+    "127.0.0.1",
+]
+
+AUTH_USER_MODEL = 'user.UserModel'

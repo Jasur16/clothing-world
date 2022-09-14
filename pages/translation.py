@@ -10,4 +10,3 @@ class AboutModelTranslationOptions(TranslationOptions):
 @register(MenBannerModel)
 class MenBannerModelTranslationOptions(TranslationOptions):
     fields = ['collections', 'title', ]
-    

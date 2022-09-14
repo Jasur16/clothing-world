@@ -7,12 +7,13 @@ from django.conf import settings
 urlpatterns = [
     path('ckeditor/', include('ckeditor_uploader.urls')),
     path('admin/', admin.site.urls),
+    path('__debug__/', include('debug_toolbar.urls')),
 ]
 
 urlpatterns += i18n_patterns(
     path('', include('pages.urls')),
+    path('', include('user.urls')),
     path('blogs/', include('blogs.urls')),
-    path('', include('account.urls')),
     path('orders/', include('orders.urls')),
     path('shop/', include('shop.urls')),
 )

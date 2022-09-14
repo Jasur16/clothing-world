@@ -42,6 +42,7 @@ class HomeView(ListView):
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
         data['posts'] = PostModel.objects.order_by('-pk')[:3]
+        data['cart_product'] = ProductModel.get_cart_objects(self.request)
         return data
 
 
@@ -88,6 +89,7 @@ class AboutView(ListView):
         data = super().get_context_data()
         data['abouts'] = AboutModel.objects.all()
         data['bar_categories'] = BarCategoryModel.objects.all()
+        data['cart_product'] = ProductModel.get_cart_objects(self.request)
         return data
 
 
@@ -119,7 +121,3 @@ def index(request):
     return render(request, 'contact.html', context={
         'form': form,
     })
-
-
-class ShoppingCart(TemplateView):
-    template_name = 'shopping-cart.html'

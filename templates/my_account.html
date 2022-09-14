@@ -14,13 +14,13 @@
             {% else %}
             <div class="text-center">
                 <h3>{% translate 'У вас есть аккаунт?' %}</h3>
-                <span><a class="" href="{% url 'login' %}">{% translate 'да' %}</a> {% translate 'или же' %} <a href="{% url 'registration' %}">{% translate 'нет' %}</a></span>
+                <span><a class="" href="{% url 'user:registration' %}">{% translate 'да' %}</a> {% translate 'или же' %} <a href="{% url 'user:login' %}">{% translate 'нет' %}</a></span>
             </div>
             <div class="my_account text-center pt-4 btn_a">
-                <a class="pr-2" href="{% url 'login' %}">
+                <a class="pr-2" href="{% url 'user:login' %}">
                     {% translate 'Авторизоваться' %}
                 </a>
-                <a class="pl-2" href="{% url 'registration' %}">
+                <a class="pl-2" href="{% url 'user:registration' %}">
                     {% translate 'Регистрация' %}
                 </a>
             </div>

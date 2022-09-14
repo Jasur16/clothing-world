@@ -1,5 +1,5 @@
 {% extends 'layouts/base.html' %}
-{% load static i18n %}
+    {% load static i18n crispy_forms_tags %}
 
 {% block account_css %}
         <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
@@ -14,20 +14,26 @@
 					{% csrf_token %}
 					<h3>{% translate 'Форма регистрации' %}</h3>
 					<div class="form-group">
-						<input name="first_name" type="text" placeholder="{% translate 'Имя' %}" class="form-control" required="True">
-						<input name="last_name" type="text" placeholder="{% translate 'Фамилия' %}" class="form-control" required="True">
+                        {{ form.first_name }}
+                        {{ form.last_name }}
+{#						<input name="first_name" type="text" placeholder="{% translate 'Имя' %}" class="form-control" required="True">#}
+{#						<input name="last_name" type="text" placeholder="{% translate 'Фамилия' %}" class="form-control" required="True">#}
+{#                        {{ form|crispy }}#}
 					</div>
 					<div class="form-wrapper">
-						<input name="username" type="text" placeholder="{% translate 'Имя пользователя' %}" class="form-control" required="True">
+                        {{ form.username }}
+{#						<input name="username" type="text" placeholder="{% translate 'Имя пользователя' %}" class="form-control" required="True">#}
 						<i class="zmdi zmdi-account"></i>
 					</div>
 					<span style="color: #ff0000; font-weight: bold;">{{ form.errors.username }}</span>
 					<div class="form-wrapper">
-						<input name="password" type="password" placeholder="{% translate 'Пароль' %}" class="form-control" required="True">
+                        {{ form.password }}
+{#						<input name="password" type="password" placeholder="{% translate 'Пароль' %}" class="form-control" required="True">#}
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<div class="form-wrapper">
-						<input name="confirm_password" type="password" placeholder="{% translate 'Подтвердить Пароль' %}" class="form-control" required="True">
+                        {{ form.confirm_password }}
+{#						<input name="confirm_password" type="password" placeholder="{% translate 'Подтвердить Пароль' %}" class="form-control" required="True">#}
 						<i class="zmdi zmdi-lock"></i>
 					</div>
 					<span style="color: #ff0000; font-weight: bold;">{{ form.errors.confirm_password }}</span>

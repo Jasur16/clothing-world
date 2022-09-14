@@ -45,6 +45,7 @@ class ShopView(ListView):
         data['sizes'] = SizeModel.objects.all()
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
+        data['cart_product'] = ProductModel.get_cart_objects(self.request)
         data['model_image'] = ProductDetailImageModel.objects.all()
         data['product_modal'] = ProductModel.objects.all()
         return data
@@ -71,6 +72,7 @@ class ProductDetailView(DetailView):
         # data['sizes'] = SizeModel.objects.all()
         # data['colors'] = ColorModel.objects.all()
         data['detail_images'] = ProductDetailImageModel.objects.all().filter(id=self.object.pk)
+        data['cart_product'] = ProductModel.get_cart_objects(self.request)
         return data
 
 
@@ -90,6 +92,7 @@ class WishlistView(LoginRequiredMixin, ListView):
     def get_context_data(self, *, object_list=None, **kwargs):
         data = super().get_context_data()
         data['orders'] = ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
+        data['cart_product'] = ProductModel.get_cart_objects(self.request)
         return data
 
 
@@ -104,3 +107,12 @@ def update_cart_view(request, id):
 
     request.session['cart'] = cart
     return redirect(request.GET.get('next', '/'))
+
+
+class ShoppingCartView(ListView):
+    template_name = 'shopping-cart.html'
+
+    def get_queryset(self):
+        products = ProductModel.get_cart_objects(self.request)
+        return products
+
