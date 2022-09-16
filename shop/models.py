@@ -1,11 +1,11 @@
 from django.contrib.auth import get_user_model
+from django.contrib.auth.models import User
 from django.db import models, IntegrityError
 from django.db.models import Sum
 from django.utils import timezone
 from django.utils.translation import gettext_lazy as _
 from ckeditor_uploader.fields import RichTextUploadingField
-
-UserModel = get_user_model()
+from user.models import UserModel
 
 
 class BarCategoryModel(models.Model):
@@ -179,3 +179,19 @@ class WishlistModel(models.Model):
         verbose_name = 'wishlist'
         verbose_name_plural = 'wishlists'
         unique_together = 'user', 'product'
+
+
+class ShopHistoryModel(models.Model):
+    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='history')
+    products = models.ManyToManyField(ProductModel)
+    full_name = models.CharField(max_length=100)
+    address = models.TextField()
+    comment = models.TextField()
+    created_at = models.DateTimeField(auto_now_add=True)
+
+    def __str__(self):
+        return self.full_name
+
+    class Meta:
+        verbose_name = 'history'
+        verbose_name_plural = 'histories'

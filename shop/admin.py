@@ -1,9 +1,16 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import ProductModel, ProductTagModel, CategoryModel, BarCategoryModel, SizeModel, ColorModel, \
-    ProductDetailImageModel
+    ProductDetailImageModel, ShopHistoryModel
 from .forms import ColorModelAdminForms
 from modeltranslation.admin import TranslationAdmin
+
+
+
+@admin.register(ShopHistoryModel)
+class ShopHistoryModelAdmin(admin.ModelAdmin):
+    list_display = ['full_name']
+    list_display_links = ['full_name']
 
 
 @admin.register(ProductDetailImageModel)

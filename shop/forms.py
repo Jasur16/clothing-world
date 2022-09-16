@@ -1,5 +1,12 @@
 from django import forms
-from .models import ColorModel
+from .models import ColorModel, ShopHistoryModel
+
+
+class CheckoutForm(forms.ModelForm):
+
+    class Meta:
+        model = ShopHistoryModel
+        exclude = ['user', 'products', 'created_at']
 
 
 class ColorModelAdminForms(forms.ModelForm):

@@ -5,7 +5,8 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View, TemplateView
 from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
-    ProductDetailImageModel, WishlistModel
+    ProductDetailImageModel, WishlistModel, ShopHistoryModel
+from .forms import CheckoutForm
 
 
 class ShopView(ListView):
@@ -110,9 +111,14 @@ def update_cart_view(request, id):
 
 
 class ShoppingCartView(ListView):
+    model = ShopHistoryModel
     template_name = 'shopping-cart.html'
 
     def get_queryset(self):
         products = ProductModel.get_cart_objects(self.request)
         return products
 
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data()
+        data['cart_product'] = ProductModel.get_cart_objects(self.request)
+        return data

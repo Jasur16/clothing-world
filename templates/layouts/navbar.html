@@ -47,7 +47,7 @@
                         <a href="{% url 'shop:home' %}">{% translate 'Подукты' %}</a>
                     </li>
 
-                    <li class="label1 {% if request.path|slice:"4:" == 'shopping-cart/' %}active-menu{% endif %}"
+                    <li class="label1 {% if request.path|slice:"4:" == 'shop/shopping-cart/' %}active-menu{% endif %}"
                         data-label1="hot">
                         <a href="{% url 'shop:shopping-cart' %}">{% translate 'Корзина покупателя' %}</a>
                     </li>
@@ -224,8 +224,8 @@
         </li>
 
         <li>
-            <a href="{% url 'shop:shopping-cart' %}" class="label1 rs1"
-               data-label1="hot {% if request.path|slice:"4:" == 'features/' %}text-dark{% endif %}">{% translate 'Корзина покупателя' %}</a>
+            <a href="{% url 'shop:shopping-cart' %}" class="label1 rs1 {% if request.path|slice:"4:" == 'orders/shopping-cart/' %}text-dark{% endif %}"
+               data-label1="hot">{% translate 'Корзина покупателя' %}</a>
         </li>
 
         <li>
@@ -292,7 +292,7 @@
                             </a>
 
                             <span class="header-cart-item-info">
-								{{ product.count }} x ${{ product.price }}
+								{{ forloop.counter }} x ${{ product.price }}
 							</span>
                         </div>
                     </li>
