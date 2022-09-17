@@ -185,6 +185,7 @@ class ShopHistoryModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='history')
     products = models.ManyToManyField(ProductModel)
     full_name = models.CharField(max_length=100)
+    phone = models.CharField(max_length=13)
     address = models.TextField()
     comment = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
