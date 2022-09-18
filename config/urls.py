@@ -15,7 +15,7 @@ urlpatterns += i18n_patterns(
     path('', include('user.urls')),
     path('blogs/', include('blogs.urls')),
     path('orders/', include('orders.urls')),
-    path('shop/', include('shop.urls')),
+    path('products/', include('shop.urls')),
 )
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

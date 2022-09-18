@@ -9,12 +9,18 @@
             </div>
             <div class="right-top-bar flex-w h-full">
                 {% if user.is_authenticated %}
+                    <a href="{% url 'user:profile' %}" class="flex-c-m trans-04 p-lr-25">
+                        {% translate 'История заказов' %}
+                    </a>
+                    <a href="{% url 'user:profile' %}" class="flex-c-m trans-04 p-lr-25">
+                        {% translate 'Профиль' %}
+                    </a>
                     <a class="flex-c-m trans-04 p-lr-25" href="{% url 'user:logout' %}">
                         {% translate 'Выйти' %}
                     </a>
                 {% else %}
                     <a href="{% url 'user:my-account' %}" class="flex-c-m trans-04 p-lr-25">
-                        {% translate 'Мой Профиль' %}
+                        {% translate 'Мой аккаунт' %}
                     </a>
                 {% endif %}
                 {% for lang in LANGUAGES %}
@@ -71,8 +77,8 @@
                 <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 js-show-modal-search">
                     <i class="zmdi zmdi-search"></i>
                 </div>
-            {% if not user.is_authenticated %}
-            <div style="padding-top: 18%;" class="modal fade" id="exampleModalToggle" aria-hidden="true"
+                {% if not user.is_authenticated %}
+                    <div style="padding-top: 18%;" class="modal fade" id="exampleModalToggle" aria-hidden="true"
                          aria-labelledby="exampleModalToggleLabel" tabindex="-1">
 
                         <div class="modal-dialog modal-dialog-centered">
@@ -101,13 +107,13 @@
                        data-notify="{{ orders.count }}">
                         <i class="zmdi zmdi-shopping-cart"></i>
                     </a>
-            {% else %}
-                {% cart_info request as info %}
-                <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
-                     data-notify="{{ info.0 }}">
-                    <i class="zmdi zmdi-shopping-cart"></i>
-                </div>
-            {% endif %}
+                {% else %}
+                    {% cart_info request as info %}
+                    <div class="icon-header-item cl2 hov-cl1 trans-04 p-l-22 p-r-11 icon-header-noti js-show-cart"
+                         data-notify="{{ info.0 }}">
+                        <i class="zmdi zmdi-shopping-cart"></i>
+                    </div>
+                {% endif %}
 
 
                 {% if not user.is_authenticated %}
@@ -189,6 +195,9 @@
     <ul class="topbar-mobile">
         <li>
             <div class="right-top-bar flex-w h-full">
+{#                <a class="flex-c-m trans-04 p-lr-20" href="">#}
+{#                    {% translate 'Профиль' %}#}
+{#                </a>#}
                 {% if user.is_authenticated %}
                     <a class="flex-c-m trans-04 p-lr-20" href="">
                         {% translate 'Выйти' %}
@@ -224,7 +233,8 @@
         </li>
 
         <li>
-            <a href="{% url 'shop:shopping-cart' %}" class="label1 rs1 {% if request.path|slice:"4:" == 'orders/shopping-cart/' %}text-dark{% endif %}"
+            <a href="{% url 'shop:shopping-cart' %}"
+               class="label1 rs1 {% if request.path|slice:"4:" == 'orders/shopping-cart/' %}text-dark{% endif %}"
                data-label1="hot">{% translate 'Корзина покупателя' %}</a>
         </li>
 

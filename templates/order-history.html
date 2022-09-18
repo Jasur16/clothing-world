@@ -1,0 +1,17 @@
+{% extends 'layouts/base.html' %}
+{% load my_tags static i18n %}
+
+{% block content %}
+    <div class="container">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
+                {% translate 'Главная' %}
+                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+            </a>
+
+            <span class="stext-109 cl4">
+				{% translate 'История покупок' %}
+			</span>
+        </div>
+    </div>
+{% endblock %}

@@ -1,7 +1,39 @@
 from django import forms
-from .models import UserModel
+from .models import UserModel, ProfileModel
 from django.utils.translation import gettext_lazy as _
 from django.core.validators import ValidationError
+
+
+class ProfileForm(forms.ModelForm):
+    class Meta:
+        model = ProfileModel
+        exclude = ['user', 'created_at']
+        widgets = {
+            'first_name': forms.TextInput(attrs={
+                'placeholder': 'First Name',
+                'class': 'stext-111 cl8 plh3 size-111 p-lr-15',
+            }),
+            'last_name': forms.TextInput(attrs={
+                'placeholder': 'Last Name',
+                'class': 'stext-111 cl8 plh3 size-111 p-lr-15',
+            }),
+            'phone': forms.TextInput(attrs={
+                'placeholder': 'Phone Number',
+                'class': 'stext-111 cl8 plh3 size-111 p-lr-15',
+            }),
+            'city': forms.TextInput(attrs={
+                'placeholder': 'City',
+                'class': 'stext-111 cl8 plh3 size-111 p-lr-15',
+            }),
+            'address': forms.Textarea(attrs={
+                'placeholder': 'First Name',
+                'class': 'stext-111 cl8 plh3 size-111 p-lr-15 pt-2',
+            }),
+            'email': forms.TextInput(attrs={
+                'placeholder': 'Email',
+                'class': 'stext-111 cl8 plh3 size-111 p-lr-15',
+            })
+        }
 
 
 class LoginForm(forms.Form):
