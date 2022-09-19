@@ -26,7 +26,7 @@ class ProfileForm(forms.ModelForm):
                 'class': 'stext-111 cl8 plh3 size-111 p-lr-15',
             }),
             'address': forms.Textarea(attrs={
-                'placeholder': 'First Name',
+                'placeholder': 'Address',
                 'class': 'stext-111 cl8 plh3 size-111 p-lr-15 pt-2',
             }),
             'email': forms.TextInput(attrs={
