@@ -43,10 +43,9 @@
                 <ul class="main-menu">
                     <li class="{% if request.path|slice:"4:" == '' %}active-menu{% endif %}">
                         <a href="{% url 'pages:home' %}">{% translate 'Главная' %}</a>
-                        <!--                            <ul class="sub-menu">-->
-                        <!--                                <li><a href="{% url 'pages:home' %}">Men</a></li>-->
-                        <!--                                <li><a href="{% url 'pages:women' %}">Women</a></li>-->
-                        <!--                            </ul>-->
+{#                        <!--                                <li><a href="{% url 'pages:home' %}">Men</a></li>-->#}
+{#                        <!--                                <li><a href="{% url 'pages:women' %}">Women</a></li>-->#}
+{#                        <!--                            </ul>-->#}
                     </li>
 
                     <li class="{% if request.path|slice:"4:" == 'shop/' %}active-menu{% endif %}">
@@ -195,9 +194,9 @@
     <ul class="topbar-mobile">
         <li>
             <div class="right-top-bar flex-w h-full">
-{#                <a class="flex-c-m trans-04 p-lr-20" href="">#}
-{#                    {% translate 'Профиль' %}#}
-{#                </a>#}
+                {#                <a class="flex-c-m trans-04 p-lr-20" href="">#}
+                {#                    {% translate 'Профиль' %}#}
+                {#                </a>#}
                 {% if user.is_authenticated %}
                     <a class="flex-c-m trans-04 p-lr-20" href="">
                         {% translate 'Выйти' %}

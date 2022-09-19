@@ -5,8 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View, TemplateView, CreateView
 from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
-    ProductDetailImageModel, WishlistModel, ShopHistoryModel
-from .forms import CheckoutForm
+    ProductDetailImageModel, WishlistModel
 
 
 class ShopView(ListView):
@@ -123,18 +122,17 @@ class ShoppingCartView(ListView):
         return data
 
 
-#
 # class CheckoutView(CreateView):
 #     form_class = CheckoutForm
 #     template_name = 'checkout.html'
 #     model = ShopHistoryModel
 
-def checkout_cart(request):
-    form = CheckoutForm()
-
-    return render(request, 'checkout.html', context={
-        'form': form,
-    })
+# def checkout_cart(request):
+#     form = CheckoutForm()
+#
+#     return render(request, 'checkout.html', context={
+#         'form': form,
+#     })
 
 # def shop_cart(request):
 #     form = CheckoutForm()
