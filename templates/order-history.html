@@ -2,6 +2,8 @@
 {% load my_tags static i18n %}
 
 {% block content %}
+    <h1>&nbsp</h1>
+    <h1>&nbsp</h1>
     <div class="container">
         <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
             <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
@@ -12,6 +14,18 @@
             <span class="stext-109 cl4">
 				{% translate 'История покупок' %}
 			</span>
+            <table class="table">
+                <thead>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Order ID</th>
+                    <th scope="col">Products</th>
+                    <th scope="col">Phone Number</th>
+                    <th scope="col">Total Price</th>
+                    <th scope="col">Created At</th>
+                </tr>
+                </thead>
+            </table>
         </div>
     </div>
 {% endblock %}
