@@ -9,7 +9,7 @@ class UserModel(AbstractUser):
 
 
 class ProfileModel(models.Model):
-    user = models.ForeignKey(UserModel, on_delete=models.CASCADE, related_name='profiles')
+    user = models.OneToOneField(UserModel, on_delete=models.CASCADE, related_name='profiles')
     first_name = models.CharField(max_length=100, null=True, blank=True)
     last_name = models.CharField(max_length=100, null=True, blank=True)
     phone = models.CharField(max_length=13, null=True, blank=True)
