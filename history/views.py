@@ -7,19 +7,11 @@ from shop.models import ProductModel
 from user.models import ProfileModel
 
 
-class OrderHistoryView(ListView):
-    template_name = 'order-history.html'
-
-    def get_queryset(self):
-        return OrderHistoryModel.objects.filter(user=self.request.user.id)
-
-
-
 class CheckoutView(CreateView):
     form_class = CheckoutForm
     template_name = 'checkout.html'
     model = OrderHistoryModel
-    success_url = 'orders/history/'
+    success_url = 'history/'
 
     def dispatch(self, request, *args, **kwargs):
         if len(request.session.get('cart', [])) == 0:
@@ -52,3 +44,15 @@ class CheckoutView(CreateView):
 
         self.request.session['cart'] = []
         return super().form_valid(form)
+
+
+class OrderHistoryView(ListView):
+    template_name = 'order-history.html'
+
+    def get_queryset(self):
+        return OrderHistoryModel.objects.filter(user=self.request.user.id)
+
+    def dispatch(self, request, *args, **kwargs):
+        if len(request.session.get('cart', [])) == 0:
+            return redirect(reverse('pages:home'))
+        return super(CheckoutView, self).dispatch(request, *args, **kwargs)

@@ -32,8 +32,8 @@ INSTALLED_APPS = [
     'blogs',
     'shop',
     'account',
-    'orders',
     'user',
+    'history',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap4'

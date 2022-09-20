@@ -14,8 +14,8 @@ class ProfileModel(models.Model):
     last_name = models.CharField(max_length=100, null=True, blank=True)
     phone = models.CharField(max_length=13, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
-    address = models.TextField(null=True, blank=True)
     email = models.EmailField(null=True, blank=True)
+    address = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:

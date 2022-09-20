@@ -120,23 +120,3 @@ class ShoppingCartView(ListView):
         data = super().get_context_data()
         data['cart_product'] = ProductModel.get_cart_objects(self.request)
         return data
-
-
-# class CheckoutView(CreateView):
-#     form_class = CheckoutForm
-#     template_name = 'checkout.html'
-#     model = ShopHistoryModel
-
-# def checkout_cart(request):
-#     form = CheckoutForm()
-#
-#     return render(request, 'checkout.html', context={
-#         'form': form,
-#     })
-
-# def shop_cart(request):
-#     form = CheckoutForm()
-#
-#     return render(request, 'shopping-cart.html', context={
-#         'form': form
-#     })

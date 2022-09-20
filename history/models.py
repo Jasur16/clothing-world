@@ -5,7 +5,7 @@ from shop.models import ProductModel
 
 class OrderHistoryModel(models.Model):
     user = models.ForeignKey(UserModel, on_delete=models.CASCADE, null=True, blank=True)
-    products = models.ForeignKey(ProductModel, on_delete=models.CASCADE)
+    products = models.ManyToManyField(ProductModel)
     first_name = models.CharField(max_length=100)
     last_name = models.CharField(max_length=100)
     phone = models.CharField(max_length=13)

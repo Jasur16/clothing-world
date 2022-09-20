@@ -9,7 +9,7 @@
             </div>
             <div class="right-top-bar flex-w h-full">
                 {% if user.is_authenticated %}
-                    <a href="{% url 'orders:history' %}" class="flex-c-m trans-04 p-lr-25">
+                    <a href="{% url 'history' %}" class="flex-c-m trans-04 p-lr-25">
                         {% translate 'История заказов' %}
                     </a>
                     <a href="{% url 'user:profile' %}" class="flex-c-m trans-04 p-lr-25">
