@@ -47,7 +47,7 @@ class PostModel(models.Model):
 class CommentModel(models.Model):
     comment = models.TextField(verbose_name=_('comment'))
     name = models.CharField(max_length=255, verbose_name=_('name'))
-    email = models.EmailField(verbose_name=_('email'))
+    # email = models.EmailField(verbose_name=_('email'))
     phone = models.CharField(max_length=13, verbose_name=_('phone'))
     post = models.ForeignKey(PostModel, on_delete=models.CASCADE, related_name='comments', verbose_name=_('post'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))

@@ -1,5 +1,5 @@
 from modeltranslation.translator import register, TranslationOptions
-from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, ProductDetailImageModel
+from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, ShopDetailImageModel
 
 
 @register(ProductModel)
@@ -27,6 +27,6 @@ class ColorModelTranslationOptions(TranslationOptions):
     fields = ['name']
 
 
-@register(ProductDetailImageModel)
-class ProductDetailImageModelTranslationOptions(TranslationOptions):
+@register(ShopDetailImageModel)
+class ShopDetailTranslationOptions(TranslationOptions):
     fields = ['title']

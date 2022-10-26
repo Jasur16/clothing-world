@@ -5,7 +5,7 @@ from django.http import JsonResponse
 from django.shortcuts import render, get_object_or_404, redirect
 from django.views.generic import ListView, DetailView, View, TemplateView, CreateView
 from .models import ProductModel, CategoryModel, ProductTagModel, BarCategoryModel, ColorModel, SizeModel, \
-    ProductDetailImageModel, WishlistModel
+    ShopDetailImageModel, WishlistModel
 
 
 class ShopView(ListView):
@@ -46,7 +46,7 @@ class ShopView(ListView):
         data['colors'] = ColorModel.objects.all()
         data['products'] = ProductModel.objects.all()
         data['cart_product'] = ProductModel.get_cart_objects(self.request)
-        data['model_image'] = ProductDetailImageModel.objects.all()
+        data['model_image'] = ShopDetailImageModel.objects.all()
         data['product_modal'] = ProductModel.objects.all()
         return data
 
@@ -69,10 +69,11 @@ class ProductDetailView(DetailView):
     def get_context_data(self, **kwargs):
         data = super().get_context_data()
         data['products'] = ProductModel.objects.all().exclude(id=self.object.pk)
-        # data['sizes'] = SizeModel.objects.all()
-        # data['colors'] = ColorModel.objects.all()
-        data['detail_images'] = ProductDetailImageModel.objects.all().filter(id=self.object.pk)
+        data['sizes'] = SizeModel.objects.all()
+        data['colors'] = ColorModel.objects.all()
+        data['detail_images'] = ShopDetailImageModel.objects.all().filter(id=self.object.pk)
         data['cart_product'] = ProductModel.get_cart_objects(self.request)
+        data['orders'] = ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
         return data
 
 
@@ -107,16 +108,3 @@ def update_cart_view(request, id):
 
     request.session['cart'] = cart
     return redirect(request.GET.get('next', '/'))
-
-
-class ShoppingCartView(ListView):
-    template_name = 'shopping-cart.html'
-
-    def get_queryset(self):
-        products = ProductModel.get_cart_objects(self.request)
-        return products
-
-    def get_context_data(self, *, object_list=None, **kwargs):
-        data = super().get_context_data()
-        data['cart_product'] = ProductModel.get_cart_objects(self.request)
-        return data

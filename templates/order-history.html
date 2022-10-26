@@ -5,27 +5,59 @@
     <h1>&nbsp</h1>
     <h1>&nbsp</h1>
     <div class="container">
-        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
-            <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
-                {% translate 'Главная' %}
-                <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
-            </a>
-
-            <span class="stext-109 cl4">
+        <a href="{% url 'pages:home' %}" class="stext-109 cl8 hov-cl1 trans-04">
+            {% translate 'Главная' %}
+            <i class="fa fa-angle-right m-l-9 m-r-10" aria-hidden="true"></i>
+        </a>
+        <span class="stext-109 cl4">
 				{% translate 'История покупок' %}
 			</span>
-            <table class="table">
-                <thead>
-                <tr>
-                    <th scope="col">#</th>
-                    <th scope="col">Order ID</th>
-                    <th scope="col">Products</th>
-                    <th scope="col">Phone Number</th>
-                    <th scope="col">Total Price</th>
-                    <th scope="col">Created At</th>
-                </tr>
-                </thead>
-            </table>
+    </div>
+    <div class="container p-5">
+        <div class="bread-crumb flex-w p-l-25 p-r-15 p-t-30 p-lr-0-lg">
+            {% for order in object_list %}
+                <div class="card" style="width: 18rem;">
+                    <div class="card-body">
+                        {% for p in order.products.all %}
+                            <h5 class="card-title"><strong class="text-dark">{{ forloop.counter }}.</strong> {{ p }}
+                                <span class="text-dark">{{ p.price }}</span></h5>
+                        {% endfor %}
+                        <hr>
+                        <h6 class="card-subtitle mb-2 text-muted pt-2"><strong
+                                class="text-dark">Total:</strong> {{ order.total_price }}$</h6>
+                        <p class="card-text text-dark">Address shipping: <br> {{ order.address }}{{ order.user }}
+                        </p>
+                    </div>
+                </div>
+            {% endfor %}
         </div>
     </div>
+    {#    <table class="table">#}
+    {#        <thead>#}
+    {#        <tr>#}
+    {#            <th scope="col">#</th>#}
+    {#            <th scope="col">Order ID</th>#}
+    {#            <th scope="col">Products</th>#}
+    {#            <th scope="col">Phone</th>#}
+    {#            <th scope="col">Total price</th>#}
+    {#        </tr>#}
+    {#        </thead>#}
+    {#        <tbody>#}
+    {#        {% for order in object_list %}#}
+    {#            <tr>#}
+    {#                <th scope="row">{{ forloop.counter }}</th>#}
+    {#                <td>{{ order.id }}</td>#}
+    {#                <td>#}
+    {#                    <ul>#}
+    {#                        {% for p in order.products.all %}#}
+    {#                            <li>{{ p }}</li>#}
+    {#                        {% endfor %}#}
+    {#                    </ul>#}
+    {#                </td>#}
+    {#                <td>{{ order.phone }}</td>#}
+    {#                <td>$ {{ order.total_price }}</td>#}
+    {#            </tr>#}
+    {#        {% endfor %}#}
+    {#        </tbody>#}
+    {#    </table>#}
 {% endblock %}

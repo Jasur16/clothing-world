@@ -1,13 +1,13 @@
 from django.contrib import admin
 from django.utils.safestring import mark_safe
 from .models import ProductModel, ProductTagModel, CategoryModel, BarCategoryModel, SizeModel, ColorModel, \
-    ProductDetailImageModel
+    ShopDetailImageModel
 from .forms import ColorModelAdminForms
 from modeltranslation.admin import TranslationAdmin
 
 
-@admin.register(ProductDetailImageModel)
-class ProductDetailImageModelAdmin(TranslationAdmin):
+@admin.register(ShopDetailImageModel)
+class ShopDetailImageModelAdmin(TranslationAdmin):
     list_display = ['title']
     list_display_links = ['title']
     list_filter = ['created_at']

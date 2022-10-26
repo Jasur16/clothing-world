@@ -1,17 +1,25 @@
 from django.db.models import Sum
-from django.shortcuts import render, reverse, redirect
-from django.views.generic import CreateView, TemplateView, ListView
-from .forms import CheckoutForm
-from .models import OrderHistoryModel
+from django.shortcuts import render, redirect, reverse
+from django.views.generic import ListView, CreateView
+import random
+from orders.forms import CheckoutForm
+from orders.models import OrderHistoryModel
 from shop.models import ProductModel
-from user.models import ProfileModel
+
+
+class ShoppingCart(ListView):
+    template_name = 'shopping-cart.html'
+
+    def get_queryset(self):
+        products = ProductModel.get_cart_objects(self.request)
+        return products
 
 
 class CheckoutView(CreateView):
     form_class = CheckoutForm
-    template_name = 'checkout.html'
     model = OrderHistoryModel
-    success_url = 'history/'
+    template_name = 'checkout.html'
+    success_url = 'order/history/'
 
     def dispatch(self, request, *args, **kwargs):
         if len(request.session.get('cart', [])) == 0:
@@ -24,6 +32,7 @@ class CheckoutView(CreateView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data()
         context['products'] = ProductModel.get_cart_objects(self.request)
+        context['orders'] = ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
 
         if hasattr(self.request.user, 'profiles'):
             context['profile'] = self.request.user.profiles
@@ -52,7 +61,7 @@ class OrderHistoryView(ListView):
     def get_queryset(self):
         return OrderHistoryModel.objects.filter(user=self.request.user.id)
 
-    def dispatch(self, request, *args, **kwargs):
-        if len(request.session.get('cart', [])) == 0:
-            return redirect(reverse('pages:home'))
-        return super(CheckoutView, self).dispatch(request, *args, **kwargs)
+    def get_context_data(self, *, object_list=None, **kwargs):
+        data = super().get_context_data()
+        data['orders'] = ProductModel.objects.filter(wishlistmodel__user_id=self.request.user)
+        return data

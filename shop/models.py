@@ -22,11 +22,25 @@ class BarCategoryModel(models.Model):
         verbose_name_plural = 'bar_categories'
 
 
-class ProductDetailImageModel(models.Model):
-    title = models.CharField(null=True, max_length=255, verbose_name=_('title'))
-    image_1 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_1'))
-    image_2 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_2'))
-    image_3 = models.ImageField(null=True, upload_to='detail_image', verbose_name=_('image_3'))
+# class ProductDetailImageModel(models.Model):
+#     title = models.CharField(max_length=255, verbose_name=_('title'))
+#     image_1 = models.ImageField(upload_to='detail_image', verbose_name=_('image_1'))
+#     image_2 = models.ImageField(upload_to='detail_image', verbose_name=_('image_2'))
+#     image_3 = models.ImageField(upload_to='detail_image', verbose_name=_('image_3'))
+#     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
+#
+#     def __str__(self):
+#         return self.title
+#
+#     class Meta:
+#         verbose_name = 'detail_image'
+#         verbose_name_plural = 'detail_images'
+
+class ShopDetailImageModel(models.Model):
+    title = models.CharField(max_length=255, verbose_name=_('title'))
+    image_1 = models.ImageField(upload_to='detail_image', verbose_name=_('image_1'))
+    image_2 = models.ImageField(upload_to='detail_image', verbose_name=_('image_2'))
+    image_3 = models.ImageField(upload_to='detail_image', verbose_name=_('image_3'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
 
     def __str__(self):
@@ -96,12 +110,10 @@ class ProductModel(models.Model):
     main_image = models.ImageField(upload_to='products', verbose_name=_('main image'))
     created_at = models.DateTimeField(auto_now_add=True, verbose_name=_('created at'))
     detail_images = models.ForeignKey(
-        ProductDetailImageModel,
+        ShopDetailImageModel,
         on_delete=models.CASCADE,
         related_name='products',
         verbose_name=_('detail images'),
-        null=True,
-        blank=True
     )
     category = models.ForeignKey(
         CategoryModel,

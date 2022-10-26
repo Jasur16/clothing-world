@@ -31,10 +31,10 @@ class PostModelAdmin(TranslationAdmin):
 
 @admin.register(CommentModel)
 class CommentModelAdmin(admin.ModelAdmin):
-    list_display = ['name', 'email', 'phone', 'post']
-    list_display_links = ['name', 'email', 'phone']
+    list_display = ['name', 'phone', 'post']
+    list_display_links = ['name',  'phone']
     search_fields = ['name']
-    readonly_fields = ['comment', 'name', 'email', 'phone']
+    readonly_fields = ['comment', 'name', 'phone']
 
 
 @admin.register(AutherModel)

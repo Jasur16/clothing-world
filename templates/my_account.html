@@ -8,7 +8,7 @@
     <div class="inner">
         <div>
             {% if user.is_authenticated %}
-            <a class="pr-2 text-center" href="">
+            <a class="pr-2 text-center" href="{% url 'user:logout' %}">
                 {% translate 'Выйти' %}
             </a>
             {% else %}
